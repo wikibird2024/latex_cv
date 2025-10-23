@@ -1,0 +1,45 @@
+# ============================
+# LaTeX build artifacts
+# ============================
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+# PDF output
+*.pdf
+
+# Backup and temp files
+*~
+*.bak
+*.tmp
+*.swp
+*.synctex
+*.synctex.gz(busy)
+
+# Generated folders
+build/
+out/
+output/
+temp/
+cache/
+
+# VSCode / Editors
+.vscode/
+.idea/
+.DS_Store

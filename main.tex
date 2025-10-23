@@ -1,0 +1,48 @@
+
+\documentclass[11pt,a4paper]{article}
+\input{preamble.tex}
+
+\begin{document}
+
+% ─────────────────────────────
+% Header — Avatar + Info
+% ─────────────────────────────
+\begin{center}
+    % Ảnh avatar
+    \includegraphics[width=3cm,clip,trim=0 0 0 0]{figures/avatar.jpg}\\[8pt]
+    
+    % Họ tên lớn, nổi bật
+    {\Huge \textbf{Nguyễn Văn Ginko}}\\[4pt]
+    
+    % Thông tin liên hệ (rõ ràng, phân tách bằng dấu chấm giữa)
+    \href{mailto:ginko@example.com}{ginko@example.com} \textbullet{}
+    +84 912 345 678 \textbullet{}
+    Hà Nội, Việt Nam \\[4pt]
+    
+    % Mục tiêu nghề nghiệp ngắn gọn (optional)
+    {\small \textit{Embedded Systems Engineer • IoT Developer • Researcher}}
+\end{center}
+
+\vspace{1em}
+
+% ─────────────────────────────
+% Nội dung chính
+% ─────────────────────────────
+
+\section*{Education}
+\input{contents/education.tex}
+
+\section*{Experience}
+\input{contents/experience.tex}
+
+\section*{Projects}
+\input{contents/projects.tex}
+
+\section*{Skills}
+\input{contents/skills.tex}
+
+% Nếu bạn có thêm phần chứng chỉ hoặc giải thưởng:
+% \section*{Certificates}
+% \input{contents/certificates.tex}
+
+\end{document}
