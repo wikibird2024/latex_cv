@@ -1,186 +1,170 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% main.tex — Complete CV Template with Dummy Data (English)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[11pt,a4paper,sans]{moderncv}
+% !TeX program = xelatex
+\documentclass[11pt, a4paper]{article} 
 
-% --- PREAMBLE ---
-\moderncvstyle{classic}     % classic | banking | casual | oldstyle | fancy
-\moderncvcolor{blue}        % blue | orange | green | red | grey | black
+% Font setup - THAY ĐỔI: dùng font có sẵn nếu không có Fira Sans
+\usepackage{fontspec}     
+\IfFontExistsTF{Fira Sans}{
+    \setmainfont{Fira Sans}
+}{
+    \setmainfont{Arial}  % Fallback font
+}
 
-% --- FONT & LANGUAGE (XeLaTeX) ---
-\usepackage{fontspec}
-\usepackage[english]{babel}
-\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-\setmainfont{Roboto}[
-    Path = /usr/share/fonts/truetype/,
-    Extension = .ttf,
-    UprightFont = *,
-    BoldFont = *Bold,
-    ItalicFont = *Italic
-]
-\setsansfont{DejaVu Sans}
+\usepackage[british]{babel}  
+\usepackage[left = 0mm, right = 0mm, top = 0mm, bottom = 0mm]{geometry}
+\usepackage{microtype}  % Simplified
+\usepackage{graphicx}        
+\usepackage{xcolor}          
+\usepackage{marvosym}        
 
-% --- PAGE GEOMETRY ---
-\usepackage[scale=0.85]{geometry}
-\setlength{\hintscolumnwidth}{3cm}
-\setlength{\makecvtitlenamewidth}{10cm}
+\usepackage{enumitem}        
+\setlist{parsep = 0pt, topsep = 0pt, partopsep = 1pt, itemsep = 1pt, leftmargin = 6mm}
 
-% --- MISC ---
-\usepackage{enumitem}
-\setlist[itemize]{leftmargin=1.5em,topsep=2pt}
-\usepackage{hyperref}
-\hypersetup{colorlinks=true,urlcolor=blue}
+\renewcommand{\familydefault}{\sfdefault}
 
-% --- PERSONAL INFO ---
-\name{Nguyen Van}{Anh}
-\title{Embedded Systems Engineer}
-\address{123 Lang Ha Street, Dong Da District}{Hanoi, Vietnam}
-\phone[mobile]{+84 912 345 678}
-\email{nguyenvananh@example.com}
-\social[github]{github.com/vananh-embedded}
-\social[linkedin]{linkedin.com/in/nguyen-van-anh}
-\photo[64pt][0.4pt]{figures/avatar.jpg} % Profile picture
+\definecolor{cvblue}{HTML}{304263}
+
+% User commands (giữ nguyên)
+\newcommand{\dates}[1]{\hfill\mbox{\textbf{#1}}}
+\newcommand{\is}{\par\vskip.5ex plus .4ex}
+\newcommand{\smaller}[1]{{\small$\diamond$\ #1}}
+\newcommand{\headleft}[1]{\vspace*{3ex}\textsc{\textbf{#1}}\par%
+    \vspace*{-1.5ex}\hrulefill\par\vspace*{0.7ex}}
+\newcommand{\headright}[1]{\vspace*{2.5ex}\textsc{\Large\color{cvblue}#1}\par%
+     \vspace*{-2ex}{\color{cvblue}\hrulefill}\par}
+
+%  Đổi màu link cho dễ nhìn
+\usepackage[colorlinks = true, urlcolor = cyan, linkcolor = cyan]{hyperref}
 
 \begin{document}
 
-\makecvtitle
+% Style definitions (Giữ nguyên)
+\setlength{\topskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\fboxsep}{0pt}
+\pagestyle{empty}
+\raggedbottom
 
-% ==========================================================
-% PROFILE SUMMARY
-% ==========================================================
-\section{Profile Summary}
-\cvitem{}{%
-Embedded Systems Engineer with 5+ years of experience in real-time embedded software development, 
-ESP32/STM32-based IoT systems design, and FreeRTOS application optimization. 
-Proven track record of deploying reliable solutions in industrial environments with high-reliability requirements.
+\begin{minipage}[t]{0.33\textwidth} %% Left column
+%  ... (Nội dung giữ nguyên)
+\colorbox{cvblue}{\begin{minipage}[t][5mm][t]{\textwidth}\null\hfill\null\end{minipage}}
+
+\vspace{-.2ex}
+\colorbox{cvblue!90}{\color{white} 
+\kern0.09\textwidth\relax
+\begin{minipage}[t][293mm][t]{0.82\textwidth}
+\raggedright
+\vspace*{2.5ex}
+
+\Large Guillaume \textbf{\textsc{Ouancaux}} \normalsize 
+
+\null\hfill\includegraphics[width=0.65\textwidth]{figures/avatar.jpg}\hfill\null
+
+\vspace*{0.5ex}
+
+\headleft{Profile}
+Innovative and passionate \textbf{data analyst} with over 15~years of experience in the chocolate and confectionery industry, seeking to leverage extensive background in data analysis, flavour profiling, and market trends.
+Proficient in Python programming, I have successfully developed and maintained multiple scalable and efficient software applications.
+Demonstrated strong problem-solving skills by implementing optimised algorithms and data structures in Python, significantly improving system performance.
+
+\headleft{Contact details}
+\small
+\MVAt\ {\small wonky.william123@gmail.com} \\[0.4ex]
+\Mobilefone\ +352\,123\,456\,789 \\[0.5ex]
+\Mundus\ \href{https://github.com/WillyWonka}{github.com/WillyWonka} \\[0.1ex]
+\Letter\ 49 Paddocks Spring, Farthingtonshire SG2 9UD, UK
+\normalsize
+
+\headleft{Personal information}
+%Year of birth: \textbf{1861} \\[0.5ex]
+Citizenship: \textbf{United Kingdom} \\[0.5ex]
+Family: \textbf{Single without children} \\[0.5ex]
+Languages: \textbf{French}~(B2), \textbf{Luxembourgish}~(A2), \textbf{German}~(A1), \textbf{English}~(native)
+
+\headleft{Skills}
+\begin{itemize}
+\item Python, SQL, PySpark
+\item R, Matlab, Azure Databricks
+\item MS Word, Excel, PowerPoint
+\item Communication and team collaboration
+\end{itemize} 
+
+\end{minipage}%
+\kern0.09\textwidth\relax
 }
+\end{minipage}% Right column
+\hskip2.5em% Left margin for the white area
+\begin{minipage}[t]{0.56\textwidth}
+\setlength{\parskip}{0.8ex}
 
-% ==========================================================
-% TECHNICAL SKILLS
-% ==========================================================
-\section{Technical Skills}
+\vspace{2ex}
 
-\cvitem{Languages}{C, C++, Python, Assembly (ARM Cortex-M)}
+\headright{Experience}
 
-\cvitem{Embedded}{STM32, ESP32, ESP8266, Arduino, Raspberry Pi, Nordic nRF52}
+\textsc{Senior data scientist} at \textit{Shockelasrull (Luxembourg).}  \dates{2021.04--pres.} \\
+\smaller{Natural language processing, topic modelling, olfactory analysis,  building chained processes, automation of reports.}
 
-\cvitem{RTOS}{FreeRTOS, Zephyr RTOS, ThreadX}
+\is
+\textsc{Data scientist} at \textit{Chocky-Facky SA (United Kingdom).}  \dates{2019.02--2020.11} \\
+\smaller{Predictive models for consumer taste preferences, market trend analysis, advanced data visualisation, negotiations with stakeholders.}
 
-\cvitem{Protocols}{UART, SPI, I2C, CAN, Modbus, MQTT, HTTP/HTTPS, WebSocket}
+\is
+\textsc{Data analyst} at \textit{Chocolate River Factory (France).}  \dates{2018.02--2018.12} \\
+\smaller{Data collection processes, extensive research on carbonation levels, collaboration with product development teams.}
 
-\cvitem{Wireless}{WiFi, Bluetooth/BLE, LoRa, Zigbee}
+\is
+\textsc{Research support} at \textit{Everlasting Gobstopper Ltd.\ (Mongolia).} \\ 
+\null\dates{2016.05--2018.01} \\[-\baselineskip]
+\smaller{Developing and implementing methods for inferring \\
+causal networks from time-series, analysis of customer feedback data, mathematical optimisation,  machine learning.}
 
-\cvitem{Tools}{
-    GCC ARM, Keil MDK, STM32CubeIDE, PlatformIO, Visual Studio Code, Git, 
-    JLINK Debugger, Logic Analyzer, Oscilloscope
-}
+\is
+\textsc{Research intern} at \textit{Snozzberry Farms (Italy).} \dates{2015.04--2015.07} \\
+\smaller{Dashboard creation with BI tools, analysis of competitor strategies.}
 
-\cvitem{Others}{Linux, Docker, CI/CD (Jenkins), PCB Design (KiCad), 3D Printing}
+\is
+\textsc{Researcher} at \textit{Whipple-Scrumptious Fudgemallow Delight Inc.\ (Guadeloupe).} \dates{2013.09--2015.01} \\
+\smaller{Econometric modelling, market data analysis, translation.} 
 
-% ==========================================================
-% WORK EXPERIENCE
-% ==========================================================
-\section{Work Experience}
+\is
+\textsc{Intern in logistics management} at \textit{Candy Confections (Egypt).} \\  
+\smaller{Data management with Microsoft Excel.} \dates{2012.04--2012.12}
 
-\cventry{2021--Present}{Senior Embedded Engineer}{VinTech Solutions JSC}{Hanoi, Vietnam}{}{
-    \begin{itemize}
-        \item Designed and developed firmware for industrial energy monitoring system using STM32F4 and FreeRTOS
-        \item Built IoT gateway collecting data from 50+ sensors via Modbus RTU/TCP and transmitting to cloud via MQTT
-        \item Optimized power consumption for battery-powered devices, achieving 40\% energy reduction
-        \item Implemented OTA (Over-The-Air) firmware updates for 200+ field devices
-        \item Conducted code reviews, mentored 3 junior engineers, and established team coding standards
-    \end{itemize}
-}
+\is
+\textsc{Editor} at \textit{BEANS Publishing LLC (Japan).} \dates{2009.03--2011.10} \\
+\smaller{Editorial work on dentistry literature, proofreading.} 
 
-\cventry{2019--2021}{Embedded Software Engineer}{Smart Home Tech Co.}{Ho Chi Minh City, Vietnam}{}{
-    \begin{itemize}
-        \item Developed firmware for smart switches and smart plugs using ESP8266/ESP32
-        \item Integrated voice control with Google Assistant and Amazon Alexa
-        \item Built mobile application (Flutter) for remote device control
-        \item Handled and resolved bugs for 10,000+ devices deployed at customer sites
-        \item Authored technical documentation and API guides for integration partners
-    \end{itemize}
-}
 
-\cventry{2017--2019}{Junior Embedded Engineer}{Electronics R\&D Lab}{Hanoi, Vietnam}{}{
-    \begin{itemize}
-        \item Developed drivers for various sensors (DHT22, BME280, MAX30102) on STM32
-        \item Designed 2-layer and 4-layer PCBs using KiCad
-        \item Performed testing and debugging with oscilloscope and logic analyzer
-        \item Participated in IoT healthcare monitoring project for hospitals
-    \end{itemize}
-}
+\headright{Education}
 
-% ==========================================================
-% PROJECTS
-% ==========================================================
-\section{Notable Projects}
+\textsc{Master in Economics.} Mathematical Methods of Economic Analysis. \textit{University of Sweets and Treats}. \dates{2013--2015} \\
+\smaller{Thesis title: \textit{The Effect of Beverage Sugar Content on Their Shelf Life.}} \\
+\smaller{Econometric analysis, survival analysis, panel and time-series models.}
 
-\cventry{2023}{Industrial Energy Monitoring System}{VinTech Solutions}{}{}{
-    \begin{itemize}
-        \item \textbf{Tech stack:} STM32F407, FreeRTOS, Modbus RTU/TCP, MQTT, ESP32
-        \item Collected energy data from 50+ Modbus meters, processed real-time on gateway
-        \item Transmitted data to AWS IoT Core every 5 seconds with latency < 200ms
-        \item Real-time dashboard display on web and mobile app
-        \item System operating stably at 15+ factories
-    \end{itemize}
-}
+\is
+\textsc{Bachelor of Science in Biology.} Faculty of Experimental Confectionery. \textit{Bolzmann State Technical University}.  \dates{2006--2010} \\
+\smaller{Mathematical modelling, numerical methods, mathematical optimisation.}
 
-\cventry{2022}{Wireless Sensor Network for Agriculture}{Personal Project}{}{}{
-    \begin{itemize}
-        \item \textbf{Tech stack:} ESP32, LoRa SX1278, MQTT, Grafana, InfluxDB
-        \item Built wireless sensor network measuring temperature, humidity, soil pH for agriculture
-        \item LoRa coverage up to 2km in outdoor conditions
-        \item Deep sleep mode for sensor nodes, operating > 6 months on 18650 battery
-        \item Open source at: \url{https://github.com/vananh-embedded/agri-wsn}
-    \end{itemize}
-}
 
-\cventry{2020}{Smart Door Lock with Fingerprint}{Smart Home Tech}{}{}{
-    \begin{itemize}
-        \item \textbf{Tech stack:} ESP32, FreeRTOS, BLE, Fingerprint Sensor (AS608)
-        \item Unlocking via fingerprint, PIN code, and mobile app via Bluetooth
-        \item Stored 200+ fingerprints on flash memory
-        \item Logged door access and sent real-time notifications via Firebase
-        \item Product sold 500+ units to customers
-    \end{itemize}
-}
+\headright{Additional education}
 
-% ==========================================================
-% EDUCATION
-% ==========================================================
-\section{Education}
+\textsc{Stanford introduction to food and health.}
+\textit{Coursera.} \dates{2021} \\
+\smaller{Contemporary trends in eating, cooking workshop, future directions in health.}
 
-\cventry{2013--2017}{Bachelor of Electronics and Telecommunications Engineering}{Hanoi University of Science and Technology}{Hanoi, Vietnam}{}{
-    \begin{itemize}
-        \item GPA: 3.5/4.0
-        \item Major: Electronics and Telecommunications Engineering
-        \item Graduation project: Remote health monitoring system using Raspberry Pi
-    \end{itemize}
-}
+\is
+\textsc{Topical courses -- Master in Chocolate Sculpting.}
+\textit{University of Cocoa.} \dates{2015--2017} \\
+\smaller{Data science, statistics and probability,  food science, agricultural science, optimal stopping theory, cultural studies in food.}
 
-% ==========================================================
-% CERTIFICATIONS
-% ==========================================================
-\section{Certifications}
 
-\cvitem{2022}{\textbf{AWS Certified IoT Specialty} -- Amazon Web Services}
-\cvitem{2021}{\textbf{Embedded Systems Certificate} -- Coursera (UC Irvine)}
-\cvitem{2020}{\textbf{FreeRTOS From Ground Up} -- Udemy}
+\headright{Hobbies}
 
-% ==========================================================
-% LANGUAGES
-% ==========================================================
-\section{Languages}
+\textit{Music:} imitating birds on the banjo, composing and decomposing (morally).
 
-\cvitemwithcomment{Vietnamese}{Native}{}
-\cvitemwithcomment{English}{Professional working proficiency}{TOEIC 850}
+\textit{Poetry:} inventing rhymes, surreal art.
 
-% ==========================================================
-% INTERESTS
-% ==========================================================
-\section{Interests}
-
-\cvitem{}{IoT, Home Automation, 3D Printing, Open Source Hardware, Drone, Robotics}
+\textit{Miscellaneous:} zoology, mycology, trainspotting, 1930s horror films.
+\end{minipage}
 
 \end{document}
