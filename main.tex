@@ -1,170 +1,109 @@
 % !TeX program = xelatex
-\documentclass[11pt, a4paper]{article} 
+\documentclass[11pt, a4paper]{article}
 
-% Font setup - THAY ĐỔI: dùng font có sẵn nếu không có Fira Sans
-\usepackage{fontspec}     
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MACROS - THAY ĐỔI THÔNG TIN Ở ĐÂY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\cvEmail}{ginko@example.com}
+\newcommand{\cvPhone}{+84 912 345 678}
+\newcommand{\cvGithubURL}{https://github.com/ginko-dev}
+\newcommand{\cvGithubText}{github.com/ginko-dev}
+\newcommand{\cvPhoto}{figures/avatar.jpg}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- Font setup ---
+\usepackage{fontspec}
 \IfFontExistsTF{Fira Sans}{
-    \setmainfont{Fira Sans}
+  \setmainfont{Fira Sans}
 }{
-    \setmainfont{Arial}  % Fallback font
+  \setmainfont{Arial}
 }
-
-\usepackage[british]{babel}  
-\usepackage[left = 0mm, right = 0mm, top = 0mm, bottom = 0mm]{geometry}
-\usepackage{microtype}  % Simplified
-\usepackage{graphicx}        
-\usepackage{xcolor}          
-\usepackage{marvosym}        
-
-\usepackage{enumitem}        
-\setlist{parsep = 0pt, topsep = 0pt, partopsep = 1pt, itemsep = 1pt, leftmargin = 6mm}
-
+% --- Packages ---
+\usepackage[left=6mm,right=6mm,top=6mm,bottom=6mm]{geometry}
+\usepackage[british]{babel}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{marvosym}
+\usepackage{enumitem}
+\usepackage[colorlinks=true, urlcolor=cyan, linkcolor=cyan]{hyperref}
+% --- Layout tuning ---
+\linespread{0.94}
+\setlist{parsep=0pt, topsep=0pt, partopsep=1pt, itemsep=1pt, leftmargin=5mm}
 \renewcommand{\familydefault}{\sfdefault}
-
+% --- Color scheme ---
 \definecolor{cvblue}{HTML}{304263}
-
-% User commands (giữ nguyên)
+% --- Helper commands ---
 \newcommand{\dates}[1]{\hfill\mbox{\textbf{#1}}}
-\newcommand{\is}{\par\vskip.5ex plus .4ex}
+\newcommand{\is}{\par\vskip.5ex plus .3ex}
 \newcommand{\smaller}[1]{{\small$\diamond$\ #1}}
-\newcommand{\headleft}[1]{\vspace*{3ex}\textsc{\textbf{#1}}\par%
-    \vspace*{-1.5ex}\hrulefill\par\vspace*{0.7ex}}
-\newcommand{\headright}[1]{\vspace*{2.5ex}\textsc{\Large\color{cvblue}#1}\par%
-     \vspace*{-2ex}{\color{cvblue}\hrulefill}\par}
-
-%  Đổi màu link cho dễ nhìn
-\usepackage[colorlinks = true, urlcolor = cyan, linkcolor = cyan]{hyperref}
-
-\begin{document}
-
-% Style definitions (Giữ nguyên)
-\setlength{\topskip}{0pt}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
-\setlength{\fboxsep}{0pt}
+\newcommand{\headleft}[1]{\vspace*{2ex}\textsc{\textbf{#1}}\par%
+  \vspace*{-1.2ex}\hrulefill\par\vspace*{0.7ex}}
+\newcommand{\headright}[1]{\vspace*{1.8ex}\textsc{\Large\color{cvblue}#1}\par%
+  \vspace*{-2ex}{\color{cvblue}\hrulefill}\par}
 \pagestyle{empty}
 \raggedbottom
-
-\begin{minipage}[t]{0.33\textwidth} %% Left column
-%  ... (Nội dung giữ nguyên)
-\colorbox{cvblue}{\begin{minipage}[t][5mm][t]{\textwidth}\null\hfill\null\end{minipage}}
-
-\vspace{-.2ex}
-\colorbox{cvblue!90}{\color{white} 
-\kern0.09\textwidth\relax
-\begin{minipage}[t][293mm][t]{0.82\textwidth}
-\raggedright
-\vspace*{2.5ex}
-
-\Large Guillaume \textbf{\textsc{Ouancaux}} \normalsize 
-
-\null\hfill\includegraphics[width=0.65\textwidth]{figures/avatar.jpg}\hfill\null
-
-\vspace*{0.5ex}
-
-\headleft{Profile}
-Innovative and passionate \textbf{data analyst} with over 15~years of experience in the chocolate and confectionery industry, seeking to leverage extensive background in data analysis, flavour profiling, and market trends.
-Proficient in Python programming, I have successfully developed and maintained multiple scalable and efficient software applications.
-Demonstrated strong problem-solving skills by implementing optimised algorithms and data structures in Python, significantly improving system performance.
-
-\headleft{Contact details}
-\small
-\MVAt\ {\small wonky.william123@gmail.com} \\[0.4ex]
-\Mobilefone\ +352\,123\,456\,789 \\[0.5ex]
-\Mundus\ \href{https://github.com/WillyWonka}{github.com/WillyWonka} \\[0.1ex]
-\Letter\ 49 Paddocks Spring, Farthingtonshire SG2 9UD, UK
-\normalsize
-
-\headleft{Personal information}
-%Year of birth: \textbf{1861} \\[0.5ex]
-Citizenship: \textbf{United Kingdom} \\[0.5ex]
-Family: \textbf{Single without children} \\[0.5ex]
-Languages: \textbf{French}~(B2), \textbf{Luxembourgish}~(A2), \textbf{German}~(A1), \textbf{English}~(native)
-
-\headleft{Skills}
-\begin{itemize}
-\item Python, SQL, PySpark
-\item R, Matlab, Azure Databricks
-\item MS Word, Excel, PowerPoint
-\item Communication and team collaboration
-\end{itemize} 
-
-\end{minipage}%
-\kern0.09\textwidth\relax
+\begin{document}
+% --- Left column ---
+\begin{minipage}[t]{0.33\textwidth}
+\colorbox{cvblue!90}{%
+  \color{white}
+  \begin{minipage}[t]{0.9\textwidth}
+    \vspace*{2ex}
+    {\Large Nguyễn Văn \textbf{Ginko}} \\[0.3ex]
+    \textit{Embedded Systems Engineer}
+    \vspace{1ex}
+    \null\hfill
+    \includegraphics[width=0.6\textwidth]{\cvPhoto}
+    \hfill\null
+    \headleft{Contact}
+    \MVAt\ \cvEmail \\[0.3ex]
+    \Mobilefone\ \cvPhone \\[0.3ex]
+    \Mundus\ \href{\cvGithubURL}{\cvGithubText} \\[0.3ex]
+    Hồ Chí Minh, Việt Nam
+    \headleft{Profile}
+    Embedded engineer chuyên về ESP32, FreeRTOS, MQTT, và vi điều khiển công nghiệp. Định hướng phát triển hệ thống nhúng hiệu suất cao và kiến trúc phần mềm module hóa.
+    \headleft{Skills}
+    \begin{itemize}
+      \item C, Python, Bash
+      \item ESP-IDF, FreeRTOS, STM32
+      \item UART, I2C, PWM, SPI
+      \item Git, Linux, Vim, tmux
+    \end{itemize}
+    \headleft{Languages}
+    Vietnamese — Native \\
+    English — Professional
+  \end{minipage}
 }
-\end{minipage}% Right column
-\hskip2.5em% Left margin for the white area
-\begin{minipage}[t]{0.56\textwidth}
-\setlength{\parskip}{0.8ex}
-
-\vspace{2ex}
-
-\headright{Experience}
-
-\textsc{Senior data scientist} at \textit{Shockelasrull (Luxembourg).}  \dates{2021.04--pres.} \\
-\smaller{Natural language processing, topic modelling, olfactory analysis,  building chained processes, automation of reports.}
-
-\is
-\textsc{Data scientist} at \textit{Chocky-Facky SA (United Kingdom).}  \dates{2019.02--2020.11} \\
-\smaller{Predictive models for consumer taste preferences, market trend analysis, advanced data visualisation, negotiations with stakeholders.}
-
-\is
-\textsc{Data analyst} at \textit{Chocolate River Factory (France).}  \dates{2018.02--2018.12} \\
-\smaller{Data collection processes, extensive research on carbonation levels, collaboration with product development teams.}
-
-\is
-\textsc{Research support} at \textit{Everlasting Gobstopper Ltd.\ (Mongolia).} \\ 
-\null\dates{2016.05--2018.01} \\[-\baselineskip]
-\smaller{Developing and implementing methods for inferring \\
-causal networks from time-series, analysis of customer feedback data, mathematical optimisation,  machine learning.}
-
-\is
-\textsc{Research intern} at \textit{Snozzberry Farms (Italy).} \dates{2015.04--2015.07} \\
-\smaller{Dashboard creation with BI tools, analysis of competitor strategies.}
-
-\is
-\textsc{Researcher} at \textit{Whipple-Scrumptious Fudgemallow Delight Inc.\ (Guadeloupe).} \dates{2013.09--2015.01} \\
-\smaller{Econometric modelling, market data analysis, translation.} 
-
-\is
-\textsc{Intern in logistics management} at \textit{Candy Confections (Egypt).} \\  
-\smaller{Data management with Microsoft Excel.} \dates{2012.04--2012.12}
-
-\is
-\textsc{Editor} at \textit{BEANS Publishing LLC (Japan).} \dates{2009.03--2011.10} \\
-\smaller{Editorial work on dentistry literature, proofreading.} 
-
-
-\headright{Education}
-
-\textsc{Master in Economics.} Mathematical Methods of Economic Analysis. \textit{University of Sweets and Treats}. \dates{2013--2015} \\
-\smaller{Thesis title: \textit{The Effect of Beverage Sugar Content on Their Shelf Life.}} \\
-\smaller{Econometric analysis, survival analysis, panel and time-series models.}
-
-\is
-\textsc{Bachelor of Science in Biology.} Faculty of Experimental Confectionery. \textit{Bolzmann State Technical University}.  \dates{2006--2010} \\
-\smaller{Mathematical modelling, numerical methods, mathematical optimisation.}
-
-
-\headright{Additional education}
-
-\textsc{Stanford introduction to food and health.}
-\textit{Coursera.} \dates{2021} \\
-\smaller{Contemporary trends in eating, cooking workshop, future directions in health.}
-
-\is
-\textsc{Topical courses -- Master in Chocolate Sculpting.}
-\textit{University of Cocoa.} \dates{2015--2017} \\
-\smaller{Data science, statistics and probability,  food science, agricultural science, optimal stopping theory, cultural studies in food.}
-
-
-\headright{Hobbies}
-
-\textit{Music:} imitating birds on the banjo, composing and decomposing (morally).
-
-\textit{Poetry:} inventing rhymes, surreal art.
-
-\textit{Miscellaneous:} zoology, mycology, trainspotting, 1930s horror films.
 \end{minipage}
-
+\hskip2em
+% --- Right column ---
+\begin{minipage}[t]{0.58\textwidth}
+\setlength{\parskip}{0.6ex}
+\vspace{1.5ex}
+\headright{Education}
+\textsc{B.Eng. Telecommunications Engineering} — HCMUT, VNU-HCM \dates{2021–2025} \\
+\smaller{Thesis: Real-time Fall Detection using ESP32 and 4G-GPS Integration.}
+\is
+\headright{Experience}
+\textsc{Embedded Developer (Freelance)} \dates{2024–Present} \\
+\smaller{Developing modular ESP-IDF components (UART, I2C, MQTT, 4G-GPS).}  
+\smaller{Implemented FreeRTOS-based fall detection system with EC800K and MPU6050.}
+\is
+\textsc{Intern – IoT \& Embedded Systems, HCMUT Lab} \dates{2023} \\
+\smaller{Prototyped Wi-Fi and MQTT data pipeline for real-time telemetry.}  
+\smaller{Designed hardware abstraction for ESP32 peripherals.}
+\is
+\headright{Projects}
+\smaller{\textbf{Fall Detection IoT System:}} ESP32 + MPU6050 + EC800K + MQTT cloud for remote alert. \\
+\smaller{\textbf{SIM4G-GPS Driver:}} Implemented AT command interface with UART abstraction. \\
+\smaller{\textbf{LED Indicator Module:}} Designed non-blocking state-driven LED system.
+\is
+\headright{Achievements}
+\smaller{Top 5 Finalist, Embedded Innovation Challenge 2024 – HCMUT.} \\
+\smaller{Contributor to open-source ESP-IDF modular components repository.}
+\is
+\headright{Interests}
+\smaller{Real-time systems, RTOS design, industrial IoT, and embedded Linux.}
+\end{minipage}
 \end{document}
