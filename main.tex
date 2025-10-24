@@ -72,28 +72,21 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-% COLUMN ENTRY ENVIRONMENTS
+% COLUMN ENTRY ENVIRONMENTS (sửa cho build ổn định)
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \newenvironment{onecolentry}{\begin{adjustwidth}{0pt}{0pt}}{\end{adjustwidth}}
-\newenvironment{twocolentry}[2][]{
-    \onecolentry
-    \def\secondColumn{#2}
-    \begin{paracol}{2}
-}{
-    \switchcolumn \raggedleft \secondColumn
-    \end{paracol}
-    \endonecolentry
-}
-\newenvironment{threecolentry}[3][]{
-    \onecolentry
-    \def\thirdColumn{#3}
-    \begin{paracol}{3}
-    {\raggedright #2} \switchcolumn
-}{
-    \switchcolumn \raggedleft \thirdColumn
-    \end{paracol}
-    \endonecolentry
-}
+
+\newenvironment{twocolentry}[2]{%
+\noindent
+\begin{minipage}[t]{0.7\textwidth}%
+#2
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.28\textwidth}%
+\raggedleft #1
+\end{minipage}%
+\vspace{0.2cm}%
+}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % HEADER ENVIRONMENT
@@ -111,8 +104,8 @@
 % HYPERREF SETTINGS
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{
-    pdftitle={Ginko's CV},
-    pdfauthor={Ginko},
+    pdftitle={Tran GinKo's CV},
+    pdfauthor={Tran GinKo},
     pdfcreator={XeLaTeX},
     colorlinks=true,
     urlcolor=primaryColor
@@ -128,12 +121,12 @@
 %==============================
 \begin{header}
 \begin{minipage}[t]{0.7\textwidth}
-    \fontsize{25pt}{25pt}\selectfont Ginko
+    \fontsize{25pt}{25pt}\selectfont Tran GinKo
 
     \vspace{3pt}
 
     \normalsize
-    \mbox{Vietnam}%
+    \mbox{Ho Chi Minh City, Vietnam}%
     \kern 5pt%
     \AND%
     \kern 5pt%
@@ -146,6 +139,10 @@
     \AND%
     \kern 5pt%
     \mbox{\href{https://github.com/ginko}{github.com/ginko}}%
+    \kern 5pt%
+    \AND%
+    \kern 5pt%
+    \mbox{\href{https://www.linkedin.com/in/placeholder}{linkedin.com/in/placeholder}}%
 \end{minipage}%
 \hfill
 \begin{minipage}[t]{0.25\textwidth}
@@ -157,16 +154,30 @@
 \vspace{5pt - 0.3cm}
 
 %==============================
+% SUMMARY
+%==============================
+\section{Summary}
+\begin{onecolentry}
+\begin{highlights}
+    \item Embedded Systems Engineer with expertise in ESP32, FreeRTOS, MQTT, and industrial IoT applications.
+    \item Skilled in modular, reusable C/C++ component design, professional firmware architecture, and system debugging.
+    \item Experience in telecommunications, sensor integration, and industrial automation projects.
+\end{highlights}
+\end{onecolentry}
+
+%==============================
 % EDUCATION
 %==============================
 \section{Education}
-\begin{twocolentry}{2018 – 2022}
-    \textbf{Bachelor of Electrical Engineering}, Hanoi University of Science and Technology
+\begin{twocolentry}{2021 – 2025}
+    \textbf{Bachelor of Engineering in Electrical Engineering}, Ho Chi Minh University of Technology (HCMUT)
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
+    \item Graduated: 2025, Engineer Degree
     \item Focus: Embedded Systems, Telecommunications
-    \item GPA: 3.8/4.0
+    \item Coursework: Digital Systems, Microcontrollers, Signal Processing, Telecommunication Techniques
+    \item GPA: Placeholder
 \end{highlights}
 \end{onecolentry}
 
@@ -175,13 +186,24 @@
 %==============================
 \section{Experience}
 \begin{twocolentry}{2022 – Present}
-    \textbf{Embedded Systems Engineer}, Industrial IoT Company, Hanoi
+    \textbf{Embedded Systems Engineer}, Industrial IoT Company, Ho Chi Minh City
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
-    \item Develop ESP32-based IoT solutions with modular architecture
-    \item Work with UART, I2C, PWM, GPIO, MQTT, Wi-Fi, SIM4G modules
-    \item Write reusable components and professional C/C++ drivers
+    \item Develop ESP32-based IoT solutions with modular component architecture.
+    \item Work with UART, I2C, PWM, GPIO, MQTT, Wi-Fi, and SIM4G modules.
+    \item Implement professional logging and debugging for embedded devices.
+    \item Manage firmware updates, OTA, and system monitoring.
+\end{highlights}
+\end{onecolentry}
+
+\begin{twocolentry}{2021 – 2022}
+    \textbf{Intern – Embedded Systems}, Research Lab, Ho Chi Minh City
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item Assisted in designing MCU-based sensor systems and data acquisition modules.
+    \item Wrote driver-level code for UART/I2C sensors and communication modules.
 \end{highlights}
 \end{onecolentry}
 
@@ -190,25 +212,46 @@
 %==============================
 \section{Projects}
 \begin{twocolentry}{2023}
-    \textbf{Fall Detection System with ESP32}
+    \textbf{Fall Detection System (ESP32, MPU6050, SIM4G-GPS)}
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
-    \item Sensor: MPU6050, LED, Buzzer, SIM4G-GPS
-    \item Features: Fall detection, SMS alert, modular component design
-    \item Technologies: ESP-IDF, FreeRTOS, MQTT
+    \item Detects falls using accelerometer, triggers buzzer/LED, sends SMS alerts.
+    \item Modular components: fall\_logic, mqtt\_client, comm, led\_indicator.
+    \item Technologies: ESP-IDF, FreeRTOS, MQTT, UART, I2C, PWM.
+\end{highlights}
+\end{onecolentry}
+
+\begin{twocolentry}{2022}
+    \textbf{IoT Environmental Monitoring}
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item Monitors temperature, humidity, and air quality via ESP32 sensors.
+    \item Real-time data displayed via MQTT broker to dashboard.
 \end{highlights}
 \end{onecolentry}
 
 %==============================
-% TECHNOLOGIES
+% SKILLS
 %==============================
-\section{Technologies}
+\section{Skills}
 \begin{onecolentry}
-\textbf{Languages:} C, C++, Python
+\begin{highlights}
+    \item \textbf{Languages:} C, C++, Python, C\#, SQL, Bash
+    \item \textbf{Technologies:} ESP32, FreeRTOS, MQTT, UART, I2C, PWM, GPIO, Wi-Fi, SIM4G
+    \item \textbf{Tools:} ESP-IDF, Git, PlatformIO, Linux, VSCode, Makefile
+\end{highlights}
 \end{onecolentry}
+
+%==============================
+% LANGUAGES
+%==============================
+\section{Languages}
 \begin{onecolentry}
-\textbf{Tools \& Frameworks:} ESP-IDF, FreeRTOS, Git, Linux
+\begin{highlights}
+    \item Vietnamese (Native), English (Professional)
+\end{highlights}
 \end{onecolentry}
 
 \end{document}
