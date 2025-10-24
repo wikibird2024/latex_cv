@@ -5,7 +5,6 @@
 % FONT & ENCODING
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{fontspec}
-\usepackage{pifont}
 \usepackage{polyglossia}
 \setmainlanguage{vietnamese}
 \setotherlanguage{english}
@@ -41,7 +40,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % PACKAGES
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{titlesec, tabularx, array, xcolor, enumitem, fontawesome5, amsmath, hyperref, graphicx, eso-pic, calc, bookmark, lastpage, changepage, paracol, ifthen, needspace}
+\usepackage{titlesec, tabularx, array, xcolor, enumitem, fontawesome5, amsmath, hyperref, graphicx, adjustbox, calc, bookmark, lastpage, changepage, needspace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % COLORS
@@ -65,14 +64,9 @@
 }{
     \end{itemize}
 }
-\newenvironment{highlightsforbulletentries}{
-    \begin{itemize}[topsep=0.10cm,parsep=0.10cm,partopsep=0pt,itemsep=0pt,leftmargin=10pt]
-}{
-    \end{itemize}
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-% COLUMN ENTRY ENVIRONMENTS (sửa cho build ổn định)
+% COLUMN ENTRY ENVIRONMENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \newenvironment{onecolentry}{\begin{adjustwidth}{0pt}{0pt}}{\end{adjustwidth}}
 
@@ -96,9 +90,6 @@
 }{
     \par\kern\topsep
 }
-\newcommand{\AND}{\unskip \cleaders\copy\ANDbox\hskip\wd\ANDbox \ignorespaces}
-\newsavebox\ANDbox
-\sbox\ANDbox{$|$}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % HYPERREF SETTINGS
@@ -120,38 +111,28 @@
 % HEADER CÓ AVATAR
 %==============================
 \begin{header}
-\begin{minipage}[t]{0.7\textwidth}
-    \fontsize{25pt}{25pt}\selectfont Tran GinKo
+\begin{minipage}[t]{0.7\textwidth} % cột trái
+    {\fontsize{25pt}{25pt}\selectfont Tran GinKo}
 
     \vspace{3pt}
 
     \normalsize
-    \mbox{Ho Chi Minh City, Vietnam}%
-    \kern 5pt%
-    \AND%
-    \kern 5pt%
-    \mbox{\href{mailto:tranhaobku2017@gmail.com}{tranhaobku2017@gmail.com}}%
-    \kern 5pt%
-    \AND%
-    \kern 5pt%
-    \mbox{\href{tel:+847912345678}{+84 791 234 568}}%
-    \kern 5pt%
-    \AND%
-    \kern 5pt%
-    \mbox{\href{https://github.com/ginko}{github.com/ginko}}%
-    \kern 5pt%
-    \AND%
-    \kern 5pt%
-    \mbox{\href{https://www.linkedin.com/in/placeholder}{linkedin.com/in/placeholder}}%
+    \begin{tabular}{@{}l@{}}
+        Ho Chi Minh City, Vietnam \\
+        \href{mailto:tranhaobku2017@gmail.com}{tranhaobku2017@gmail.com} \\
+        \href{tel:+847912345678}{+84 791 234 568} \\
+        \href{https://github.com/ginko}{github.com/ginko} \\
+        \href{https://www.linkedin.com/in/placeholder}{linkedin.com/in/placeholder}
+    \end{tabular}
 \end{minipage}%
 \hfill
-\begin{minipage}[t]{0.25\textwidth}
+\begin{minipage}[t]{0.25\textwidth} % cột phải (avatar)
     \raggedleft
     \includegraphics[width=3cm,height=3cm,keepaspectratio]{images/avatar.jpg}
 \end{minipage}
 \end{header}
 
-\vspace{5pt - 0.3cm}
+\vspace{0.5cm}
 
 %==============================
 % SUMMARY
@@ -169,8 +150,9 @@
 % EDUCATION
 %==============================
 \section{Education}
-\begin{twocolentry}{2021 – 2025}
+\begin{twocolentry}{2021 -- 2025}{%
     \textbf{Bachelor of Engineering in Electrical Engineering}, Ho Chi Minh University of Technology (HCMUT)
+}
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
@@ -185,8 +167,9 @@
 % EXPERIENCE
 %==============================
 \section{Experience}
-\begin{twocolentry}{2022 – Present}
+\begin{twocolentry}{2022 -- Present}{%
     \textbf{Embedded Systems Engineer}, Industrial IoT Company, Ho Chi Minh City
+}
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
@@ -197,8 +180,9 @@
 \end{highlights}
 \end{onecolentry}
 
-\begin{twocolentry}{2021 – 2022}
+\begin{twocolentry}{2021 -- 2022}{%
     \textbf{Intern – Embedded Systems}, Research Lab, Ho Chi Minh City
+}
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
@@ -211,8 +195,9 @@
 % PROJECTS
 %==============================
 \section{Projects}
-\begin{twocolentry}{2023}
+\begin{twocolentry}{2023}{%
     \textbf{Fall Detection System (ESP32, MPU6050, SIM4G-GPS)}
+}
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
@@ -222,8 +207,9 @@
 \end{highlights}
 \end{onecolentry}
 
-\begin{twocolentry}{2022}
+\begin{twocolentry}{2022}{%
     \textbf{IoT Environmental Monitoring}
+}
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
