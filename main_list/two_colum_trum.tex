@@ -1,0 +1,115 @@
+
+% !TeX program = xelatex
+\documentclass[11pt, a4paper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MACROS - THAY ĐỔI THÔNG TIN Ở ĐÂY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\cvEmail}{tranhaoku2017@gmail.com}
+\newcommand{\cvPhone}{+84 912 345 678}
+\newcommand{\cvGithubURL}{https://github.com/wikibird2024}
+\newcommand{\cvGithubText}{github.com/tranhao}
+\newcommand{\cvPhoto}{images/avatar.jpg}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- Font setup ---
+\usepackage{fontspec}
+\IfFontExistsTF{Fira Sans}{
+  \setmainfont{Fira Sans}
+}{
+  \setmainfont{Arial}
+}
+% --- Packages ---
+\usepackage[left=6mm,right=6mm,top=6mm,bottom=6mm]{geometry}
+\usepackage[british]{babel}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{marvosym}
+\usepackage{enumitem}
+\usepackage[colorlinks=true, urlcolor=cyan, linkcolor=cyan]{hyperref}
+% --- Layout tuning ---
+\linespread{0.94}
+\setlist{parsep=0pt, topsep=0pt, partopsep=1pt, itemsep=1pt, leftmargin=5mm}
+\renewcommand{\familydefault}{\sfdefault}
+% --- Color scheme ---
+\definecolor{cvblue}{HTML}{304263}
+% --- Helper commands ---
+\newcommand{\dates}[1]{\hfill\mbox{\textbf{#1}}}
+\newcommand{\is}{\par\vskip.5ex plus .3ex}
+\newcommand{\smaller}[1]{{\small$\diamond$\ #1}}
+\newcommand{\headleft}[1]{\vspace*{2ex}\textsc{\textbf{#1}}\par%
+  \vspace*{-1.2ex}\hrulefill\par\vspace*{0.7ex}}
+\newcommand{\headright}[1]{\vspace*{1.8ex}\textsc{\Large\color{cvblue}#1}\par%
+  \vspace*{-2ex}{\color{cvblue}\hrulefill}\par}
+\pagestyle{empty}
+\raggedbottom
+\begin{document}
+% --- Left column ---
+\begin{minipage}[t]{0.33\textwidth}
+\colorbox{cvblue!90}{%
+  \color{white}
+  \begin{minipage}[t]{0.9\textwidth}
+    \vspace*{2ex}
+    {\Large Nguyễn Văn \textbf{Ginko}} \\[0.3ex]
+    \textit{Embedded Systems Engineer}
+    \vspace{1ex}
+    \null\hfill
+    \includegraphics[width=0.6\textwidth]{\cvPhoto}
+    \hfill\null
+    \headleft{Contact}
+    \MVAt\ \cvEmail \\[0.3ex]
+    \Mobilefone\ \cvPhone \\[0.3ex]
+    \Mundus\ \href{\cvGithubURL}{\cvGithubText} \\[0.3ex]
+    Hồ Chí Minh, Việt Nam \\[0.3ex]
+    \headleft{Profile}
+    Embedded engineer chuyên về ESP32, FreeRTOS, MQTT, và vi điều khiển công nghiệp. Định hướng phát triển hệ thống nhúng hiệu suất cao và kiến trúc phần mềm module hóa.\\[0.3ex]
+    \headleft{Skills}
+    \begin{itemize}
+      \item C, Python, Bash
+      \item ESP-IDF, FreeRTOS, STM32
+      \item UART, I2C, PWM, SPI
+      \item Git, Linux, Vim, tmux
+    \end{itemize}
+    \headleft{Languages}
+    Vietnamese — Native \\
+    English — Professional
+  \end{minipage}
+}
+\end{minipage}
+\hskip2em
+% --- Right column ---
+\begin{minipage}[t]{0.58\textwidth}
+\setlength{\parskip}{0.6ex}
+\vspace{1.5ex}
+\headright{Education}
+\textsc{Engineer’s Degree in Telecommunications Engineering} \dates{2025} \\
+\smaller{Ho Chi Minh University of Technology (HCMUT)}\\
+\smaller{Thesis: Real-time Fall Detection using ESP32 and 4G-GPS Integration.}
+\is
+
+\headright{Experience}
+
+\textsc{Embedded Developer (Freelance)} \dates{2024–Present} \\
+\smaller{Developed and maintained modular ESP-IDF components (UART, I2C, MQTT, 4G-GPS).}  
+\smaller{Implemented a FreeRTOS-based fall detection firmware integrating EC800K (4G-GPS) and MPU6050.}
+\is
+
+\textsc{Intern – IoT \& Embedded Systems, HCMUT Lab} \dates{2023} \\
+\smaller{Prototyped Wi-Fi + MQTT data pipelines for real-time telemetry.}\\  
+\smaller{Designed reusable hardware abstraction layers for ESP32 peripherals.}
+\is
+
+\headright{Projects}
+\smaller{\textbf{Fall Detection IoT System:}} ESP32 + MPU6050 + EC800K + MQTT cloud for remote alert. \\
+\smaller{\textbf{SIM4G-GPS Driver:}} Implemented AT command interface with UART abstraction. \\
+\smaller{\textbf{LED Indicator Module:}} Designed non-blocking state-driven LED system.
+\is
+\headright{Achievements}
+\smaller{Top 5 Finalist, Embedded Innovation Challenge 2024 – HCMUT.} \\
+\smaller{Contributor to open-source ESP-IDF modular components repository.}
+\is
+\headright{Interests}
+\smaller{Real-time systems, RTOS design, industrial IoT, and embedded Linux.}
+\end{minipage}
+\end{document}
