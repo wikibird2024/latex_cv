@@ -1,127 +1,306 @@
+\documentclass[10pt, letterpaper]{article}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% main.tex — CV Template (Personalized, 1-page)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[11pt,a4paper,sans]{moderncv}
-
-% --- PREAMBLE ---
-\moderncvstyle{classic}     
-\moderncvcolor{blue}        
-
-% --- FONT & LANGUAGE (XeLaTeX) ---
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FONT & ENCODING
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --- XeLaTeX required ---
 \usepackage{fontspec}
-\usepackage[english]{babel}
-\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-\setmainfont{Roboto}[
-    Path = /usr/share/fonts/truetype/,
-    Extension = .ttf,
-    UprightFont = *,
-    BoldFont = *Bold,
-    ItalicFont = *Italic
+\usepackage{pifont}
+% --- Polyglossia for Vietnamese and English ---
+\usepackage{polyglossia}
+\setmainlanguage{vietnamese}
+\setotherlanguage{english}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             FONT CONFIGURATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{unicode-math}
+
+% Main serif font: TeX Gyre Termes (clone Times New Roman, rõ ràng, an toàn)
+\setmainfont{TeX Gyre Termes}[
+    Ligatures=TeX,
+    Scale=1.05 % hơi lớn hơn chút, dễ đọc khi in
 ]
-\setsansfont{DejaVu Sans}
 
-% --- PAGE GEOMETRY ---
-\usepackage[scale=0.85]{geometry}
-\setlength{\hintscolumnwidth}{3cm}
-\setlength{\makecvtitlenamewidth}{10cm}
+% Sans-serif: TeX Gyre Heros (clone Helvetica – rõ, mạnh mẽ, hợp tiêu đề)
+\setsansfont{TeX Gyre Heros}[
+    Ligatures=TeX,
+    Scale=1.0
+]
 
-% --- MISC ---
-\usepackage{enumitem}
-\setlist[itemize]{leftmargin=1.5em,topsep=1pt,itemsep=1pt}
-\usepackage{hyperref}
-\hypersetup{colorlinks=true,urlcolor=blue}
+% Math font: Latin Modern Math (ổn định, rõ ràng)
+\setmathfont{Latin Modern Math}
 
-% --- PERSONAL INFO ---
-\name{Nguyễn Văn}{Ginko}
-\title{Embedded Systems Engineer}
-\address{Hồ Chí Minh, Việt Nam}{}
-\phone[mobile]{+84 912 345 678}
-\email{tranhaoku2017@gmail.com}
-\social[github]{github.com/tranhao}  
-\photo[64pt][0.4pt]{figures/avatar.jpg} 
+% ============================
+% Micro-typography
+% ============================
+\usepackage[protrusion=true, expansion=true]{microtype}
+\microtypesetup{spacing=true, kerning=true}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PAGE LAYOUT
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[
+    ignoreheadfoot,
+    top=2cm,
+    bottom=2cm,
+    left=2cm,
+    right=2cm,
+    footskip=1.0cm
+]{geometry}
+
+\pagestyle{empty} % no page numbering
+\setlength{\parindent}{0pt}
+\setcounter{secnumdepth}{0} % no section numbering
+\raggedright
+\setlength{\columnsep}{0.15cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{titlesec}      % section formatting
+\usepackage{tabularx, array} % tables
+\usepackage[dvipsnames]{xcolor} % colors
+\usepackage{enumitem}      % list formatting
+\usepackage{fontawesome5}  % icons
+\usepackage{amsmath}        % math
+\usepackage{hyperref}      % links
+\usepackage[pscoord]{eso-pic} % floating elements
+\usepackage{calc}          % calculate lengths
+\usepackage{bookmark}      % bookmarks
+\usepackage{lastpage}      % total pages
+\usepackage{changepage}    % adjustwidth
+\usepackage{paracol}        % multi-columns
+\usepackage{ifthen}        % conditionals
+\usepackage{needspace}     % avoid page breaks after titles
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ĐÃ SỬA: Đổi màu chính từ đen sang xanh đậm (Dark Blue)
+\definecolor{primaryColor}{RGB}{0,0,200} % Dark Blue
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION FORMATTING
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ĐÃ SỬA: Thêm \color{primaryColor} vào titleformat để đổi màu tiêu đề và gạch ngang
+\titleformat{\section}{\needspace{4\baselineskip}\color{primaryColor}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule[1pt]]
+\titlespacing{\section}{-1pt}{0.3cm}{0.2cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BULLET POINTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10cm,
+        parsep=0.10cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+}
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10cm,
+        parsep=0.10cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLUMN ENTRY ENVIRONMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{0pt}{0pt}
+}{
+    \end{adjustwidth}
+}
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HEADER ENVIRONMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+}
+
+\newcommand{\AND}{\unskip
+    \cleaders\copy\ANDbox\hskip\wd\ANDbox
+    \ignorespaces
+}
+\newsavebox\ANDbox
+\sbox\ANDbox{$|$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HYPERREF SETTINGS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    pdftitle={John Doe's CV},
+    pdfauthor={John Doe},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\makecvtitle
+%==============================
+% HEADER
+%==============================
+% Gợi ý: Bạn có thể thêm \color{primaryColor} vào đây nếu muốn tên John Doe cũng màu xanh
+\begin{header}
+    \fontsize{25pt}{25pt}\selectfont John Doe
 
-% ==========================================================
-% PROFILE SUMMARY
-% ==========================================================
-\section{Profile}
-\cvitem{}{Embedded engineer chuyên về ESP32, FreeRTOS, MQTT và vi điều khiển công nghiệp. 
-Thiết kế hệ thống nhúng hiệu suất cao, kiến trúc module hóa. TOEIC 740.}
+    \vspace{5pt}
 
-% ==========================================================
-% TECHNICAL SKILLS
-% ==========================================================
-\section{Skills}
-\cvitem{Languages}{C, Python, Bash}
-\cvitem{Embedded}{ESP32, STM32, Arduino}
-\cvitem{RTOS}{FreeRTOS, Zephyr}
-\cvitem{Protocols}{UART, I2C, SPI, MQTT}
-\cvitem{Tools}{Git, STM32CubeIDE, Logic Analyzer, Oscilloscope}
-\cvitem{Others}{Linux, Docker, KiCad}
+    \normalsize
+    \mbox{Your Location}%
+    \kern 5.0pt%
+    \AND%
+    \kern 5.0pt%
+    \mbox{\href{mailto:youremail@yourdomain.com}{youremail@yourdomain.com}}%
+    \kern 5.0pt%
+    \AND%
+    \kern 5.0pt%
+    \mbox{\href{tel:+90-541-999-99-99}{0541 999 99 99}}%
+    \kern 5.0pt%
+    \AND%
+    \kern 5.0pt%
+    \mbox{\href{https://yourwebsite.com/}{yourwebsite.com}}%
+    \kern 5.0pt%
+    \AND%
+    \kern 5.0pt%
+    \mbox{\href{https://linkedin.com/in/yourusername}{linkedin.com/in/yourusername}}%
+    \kern 5.0pt%
+    \AND%
+    \kern 5.0pt%
+    \mbox{\href{https://github.com/yourusername}{github.com/yourusername}}%
+\end{header}
 
-% ==========================================================
-% EXPERIENCE
-% ==========================================================
-\section{Experience}
-\cventry{2024--Present}{Embedded Developer (Freelance)}{}{}{}{
-\begin{itemize}
-    \item Modular ESP-IDF components (UART, I2C, MQTT, 4G-GPS)
-    \item FreeRTOS-based fall detection firmware (ESP32 + MPU6050 + EC800K)
-\end{itemize}
-}
+\vspace{5pt - 0.3cm}
 
-\cventry{2023}{Intern – IoT \& Embedded Systems, HCMUT Lab}{}{}{}{
-\begin{itemize}
-    \item Wi-Fi + MQTT pipelines for real-time telemetry
-    \item Hardware abstraction layers for ESP32
-\end{itemize}
-}
+%==============================
+% SECTIONS
+%==============================
 
-% ==========================================================
-% PROJECTS
-% ==========================================================
-\section{Projects}
-\cventry{2024}{Fall Detection IoT System}{}{}{}{
-ESP32 + MPU6050 + EC800K + MQTT cloud alerts
-}
-\cventry{2024}{SIM4G-GPS Driver}{}{}{}{
-AT command interface with UART abstraction
-}
-\cventry{2024}{LED Indicator Module}{}{}{}{
-Non-blocking state-driven LED system
-}
+\section{Welcome to RenderCV!}
+\begin{onecolentry}
+\href{https://rendercv.com}{RenderCV} is a LaTeX-based CV/resume version-control and maintenance app. It allows you to create a high-quality CV or resume as a PDF file from a YAML file, with \textbf{Markdown syntax support} and \textbf{complete control over the LaTeX code}.
+\end{onecolentry}
 
-% ==========================================================
-% EDUCATION
-% ==========================================================
+\vspace{0.2cm}
+
+\begin{onecolentry}
+The boilerplate content was inspired by \href{https://github.com/dnl-blkv/mcdowell-cv}{Gayle McDowell}.
+\end{onecolentry}
+
+\section{Quick Guide}
+\begin{onecolentry}
+\begin{highlightsforbulletentries}
+    \item Each section title is arbitrary and each section contains a list of entries.
+    \item There are 7 unique entry types: \textit{BulletEntry}, \textit{TextEntry}, \textit{EducationEntry}, \textit{ExperienceEntry}, \textit{NormalEntry}, \textit{PublicationEntry}, and \textit{OneLineEntry}.
+    \item Select a section title, pick an entry type, and start writing your section!
+    \item \href{https://docs.rendercv.com/user_guide/}{Here}, you can find a comprehensive user guide for RenderCV.
+\end{highlightsforbulletentries}
+\end{onecolentry}
+
 \section{Education}
-\cventry{2025}{Engineer’s Degree in Telecommunications Engineering}{HCM University of Technology}{}{}{
-Thesis: Real-time Fall Detection using ESP32 + 4G-GPS
-}
+\begin{twocolentry}{Sept 2000 – May 2005}
+    \textbf{University of Pennsylvania}, BS in Computer Science
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item GPA: 3.9/4.0 (\href{https://example.com}{link})
+    \item \textbf{Coursework:} Computer Architecture, Comparison of Learning Algorithms, Computational Theory
+\end{highlights}
+\end{onecolentry}
 
-% ==========================================================
-% CERTIFICATIONS
-% ==========================================================
-\section{Certifications}
-\cvitem{2022}{AWS Certified IoT Specialty}
-\cvitem{2021}{Embedded Systems Certificate — Coursera}
-\cvitem{2020}{FreeRTOS From Ground Up — Udemy}
+\section{Experience}
+\begin{twocolentry}{June 2005 – Aug 2007}
+    \textbf{Software Engineer}, Apple -- Cupertino, CA
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item Reduced time to render user buddy lists by 75\% by implementing a prediction algorithm
+    \item Integrated iChat with Spotlight Search by creating a tool to extract metadata from saved chat transcripts
+    \item Redesigned chat file format and implemented backward compatibility
+\end{highlights}
+\end="onecolentry"}
 
-% ==========================================================
-% LANGUAGES
-% ==========================================================
-\section{Languages}
-\cvitemwithcomment{Vietnamese}{Native}{}
-\cvitemwithcomment{English}{Professional}{TOEIC 740}
+\begin{twocolentry}{June 2003 – Aug 2003}
+    \textbf{Software Engineer Intern}, Microsoft -- Redmond, WA
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item Designed a UI for VS open file switcher (Ctrl-Tab) and extended it to tool windows
+    \item Automated extraction and processing of large datasets from legacy systems using SQL and Perl scripts
+\end{highlights}
+\end{onecolentry}
 
-% ==========================================================
-% INTERESTS
-% ==========================================================
-\section{Interests}
-\cvitem{}{Real-time systems, RTOS, industrial IoT, embedded Linux}
+\section{Publications}
+\begin{twocolentry}{Jan 2004}
+    \textbf{3D Finite Element Analysis of No-Insulation Coils}
+\end{twocolentry}
+\begin{onecolentry}
+\mbox{Frodo Baggins}, \textbf{\textit{John Doe}}, Samwise Gamgee
+
+\vspace{0.1cm}
+\href{https://doi.org/10.1109/TASC.2023.3340648}{10.1109/TASC.2023.3340648}
+\end{onecolentry}
+
+\section{Projects}
+\begin{twocolentry}{\href{https://github.com/sinaatalay/rendercv}{github.com/name/repo}}
+    \textbf{Multi-User Drawing Tool}
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item Developed an electronic classroom with synchronized multi-user chalkboard
+    \item Tools Used: C++, MFC
+\end{highlights}
+\end{onecolentry}
+
+\section{Technologies}
+\begin{onecolentry}
+\textbf{Languages:} C++, C, Java, Objective-C, C\#, SQL, JavaScript
+\end{onecolentry}
+
+\begin{onecolentry}
+\textbf{Technologies:} .NET, Microsoft SQL Server, XCode, Interface Builder
+\end{onecolentry}
 
 \end{document}
