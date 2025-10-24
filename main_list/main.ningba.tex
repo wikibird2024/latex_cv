@@ -1,0 +1,244 @@
+\documentclass[11pt]{article}
+
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{fontspec} % Vẫn giữ gói này để sử dụng XeLaTeX
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fancybox}
+
+\hypersetup{hidelinks}
+
+%%%%%%%%%%%%%%%%%%%%
+% Settings
+%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\parindent}{0pt}         % Remove paragraph indentation
+\pagenumbering{gobble}              % Remove page numbering
+\setlist[itemize]{nosep            % Remove default itemize spacing
+    , before={\vspace*{-\parskip}}  % Remove spacing before/after itemize
+    , leftmargin=*}                 % Remove left margin
+\setlist[enumerate]{leftmargin=*}    % Remove left margin for enumerate
+\renewcommand{\arraystretch}{1.2}   % Table row spacing
+\linespread{1.25}                   % Line spacing
+
+\titleformat{\section}              % Remove section numbers
+    {\LARGE\bfseries\raggedright}   % Font: LARGE, bold, left-aligned
+    {}{0em}                         % Optional global prefix
+    {}                              % Optional code
+    [{\color{secondary_color}\titlerule}] % Rule under section
+\titlespacing*{\section}{0cm}{*1.2}{*1.2} % Left, above, below spacing
+
+\usepackage[
+    a4paper,
+    left=1.2cm,
+    right=1.2cm,
+    top=1.5cm,
+    bottom=1cm,
+    nohead
+]{geometry}                         % Page margins
+
+% Font settings
+% ------------------------------------------------------------------
+% Đã thay đổi phông chữ bị lỗi bằng phông chữ Latin Modern Roman
+% (mặc định hiện đại của LaTeX, luôn có sẵn).
+\setmainfont{Latin Modern Roman} 
+% Nếu muốn phông chữ Sans-serif an toàn, có thể dùng:
+% \setsansfont{Latin Modern Sans}
+% ------------------------------------------------------------------
+
+% Custom colors
+\definecolor{primary_color}{RGB}{200, 60, 60}     % Primary color
+\definecolor{secondary_color}{RGB}{200, 68, 28} % Secondary color
+
+\newlength{\iconwidth}
+\setlength{\iconwidth}{1.5em}                   % Width for section icons
+
+%%%%%%%%%%%%%%%%%%%%
+% Document content
+%%%%%%%%%%%%%%%%%%%%
+
+% Faculty
+\newcommand{\school}{Faculty of Maritime and Transportation} 
+
+% Contact info
+\newcommand{\contact}{
+    \footnotesize
+    \textcolor{white}{
+        \faEnvelope \quad \href{mailto:youremail@nbu.edu.cn}{youremail@nbu.edu.com}
+        \hspace{4em}
+        \faPhone \quad  130-6666-0000
+        \hspace{4em}
+        \faGithub \quad \href{https://github.com/Exception0x0194/SEU-CV}{GitHub Project}
+    }
+}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%
+% Header, footer, background
+%%%%%%%%%%%%%%%%%%%%
+
+% Header: logo + faculty
+\begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north, inner sep=0pt](header) at (current page.north){
+        \includegraphics[width=\paperwidth]{images/head.png}
+    };
+    \node[anchor=west](school_logo) at (header.west){
+        \hspace{0.5cm}
+        \includegraphics[width=0.2\textwidth]{images/nbu_logo.png}
+    };
+    \node[anchor=east](school_name) at(header.east){
+        \textcolor{white}{\textbf{\school}}
+        \hspace{0.5cm}
+    };
+\end{tikzpicture}
+\vspace{-3.5em}
+
+% Footer: contact info
+\begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=south, inner sep=0pt](footer) at (current page.south){
+        \includegraphics[width=\paperwidth]{images/foot.png}
+    };
+    \node[anchor=center] at(footer.center){\contact};
+\end{tikzpicture}
+
+% Background
+\begin{tikzpicture}[remember picture, overlay]
+    \node[opacity=0.05] at(current page.center){
+        \includegraphics[width=0.7\paperwidth, keepaspectratio]{images/nbu_logo2.png}
+    };
+\end{tikzpicture}
+
+%%%%%%%%%%%%%%%%%%%%
+% Resume content
+%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.78\textwidth}
+    % Personal info
+    \begin{minipage}[t]{\textwidth}
+    \section[Personal Info]{\makebox[\iconwidth][c]{\color{primary_color}{\faAddressCard}}\quad Personal Info}
+    \begin{minipage}[t]{0.5\textwidth}
+        \textbf{Name}: Ikun
+        
+        \vspace{0.5em}
+        \textbf{Date of Birth}: 2.5 years old
+    \end{minipage}
+    \begin{minipage}[t]{0.35\textwidth}
+        \textbf{Gender}: Very beautiful
+        
+        \vspace{0.5em}
+        \textbf{Political Status}: General public
+    \end{minipage}
+    \vspace{1.2em}
+    \end{minipage}
+
+    % Education
+    \begin{minipage}[t]{\textwidth}
+    \section[Education]{\makebox[\iconwidth][c]{\color{primary_color}{\faGraduationCap}}\quad Education}
+    
+    {\large \textbf{Ningbo University}}, Associate Degree \hfill Sep 2000--Jun 2010
+    \begin{itemize}
+        \item Faculty \& Major
+        \item \textbf{Major Courses}: Course 1, Course 2, Course 3, Course 4, etc.
+    \end{itemize}
+    
+    \vspace{0.5em}
+    {\large \textbf{Ningbo University}}, Bachelor's \hfill Sep 2010--Jun 2020
+    \begin{itemize}
+        \item Faculty \& Major
+        \item \textbf{Major Courses}: Course 1, Course 2, Course 3, Course 4, etc.
+        \item \textbf{GPA}: 4.8 / 4.8 (Rank: 1 / 250)
+    \end{itemize}
+    
+    \vspace{0.5em}
+    {\large \textbf{Ningbo University}}, Master's \hfill Sep 2020--Present
+    \begin{itemize}
+        \item Faculty, Major, Advisor Name \& Title
+        \item \textbf{Research Areas}: Area 1, Area 2, Area 3, Area 4, etc.
+    \end{itemize}
+    
+    \vspace{1.2em}
+    \end{minipage}
+\end{minipage}
+\hfill
+% Right: photo
+\begin{minipage}[t]{0.2\textwidth}
+    \vspace{2em}
+    \setlength{\fboxsep}{0pt}
+    \doublebox{\includegraphics[width=\linewidth]{images/kun.png}}
+\end{minipage}
+
+\begin{minipage}[t]{\textwidth}
+% Research
+\section[Research]{\makebox[\iconwidth][c]{\color{primary_color}{\faAtom}}\quad Research}
+
+% Paper 1
+This is one of your papers published in Conference A.
+\begin{itemize}
+    \item \textbf{Your Name}, Advisor Name. \hfill Published in \textbf{Conference A} (CCF-A)
+    \item Brief description of what this paper achieved...
+\end{itemize}
+
+\vspace{0.5em}
+% Paper 2
+Another paper title
+\begin{itemize}
+    \item \textbf{Your Name}, Colleague, Advisor. \hfill Published in \textbf{Journal X} (SCI-1)
+    \item Brief description of what this paper achieved...
+\end{itemize}
+
+\vspace{1.2em}
+\end{minipage}
+
+\begin{minipage}[t]{\textwidth}
+% Projects / Teaching
+\section[Projects \& Teaching]{\makebox[\iconwidth][c]{\color{primary_color}{\faChalkboardTeacher}}\quad Projects \& Teaching}
+
+{\large \textbf{Project Name}} \hfill Sep 2020--Sep 2021
+\begin{itemize}
+    \item \textbf{Role in Project} \hfill Horizontal/Vertical Project - Completed/In Progress
+    \item One-line description of your work in this project...
+\end{itemize}
+
+\vspace{0.5em}
+{\large \textbf{Discussion Class}}, Lecturer/Participant \hfill Summer 2020
+\begin{itemize}
+    \item \textbf{Content}: Topic 1, Topic 2, Topic 3, etc.
+\end{itemize}
+
+\vspace{0.5em}
+{\large \textbf{Course Name}}, Teaching Assistant \hfill Summer 2021
+\begin{itemize}
+    \item \textbf{Content}: Topic 1, Topic 2, Topic 3, etc.
+\end{itemize}
+
+\vspace{1.2em}
+\end{minipage}
+
+\begin{minipage}[t]{0.6\textwidth}
+\section[Skills]{\makebox[\iconwidth][c]{\color{primary_color}{\faWrench}}\quad Skills}
+\begin{itemize}
+\setlength{\itemsep}{0.5em}
+    \item Proficient in Python, Java, Rust.
+    \item Experienced with TensorFlow, PyTorch.
+    \item Familiar with Windows and Linux development.
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.35\textwidth}
+\section[Hobbies]{\makebox[\iconwidth][c]{\color{primary_color}{\faStar}}\quad Hobbies}
+\begin{itemize}
+\setlength{\itemsep}{0.5em}
+    \item Singing
+    \item Dancing
+    \item Rap
+    \item Basketball
+\end{itemize}
+\end{minipage}
+
+\end{document}
