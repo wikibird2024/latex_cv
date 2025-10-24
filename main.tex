@@ -1,40 +1,22 @@
+
 \documentclass[10pt, letterpaper]{article}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % FONT & ENCODING
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-% --- XeLaTeX required ---
 \usepackage{fontspec}
 \usepackage{pifont}
-% --- Polyglossia for Vietnamese and English ---
 \usepackage{polyglossia}
 \setmainlanguage{vietnamese}
 \setotherlanguage{english}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                             FONT CONFIGURATION
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Fonts
 \usepackage{unicode-math}
-
-% Main serif font: TeX Gyre Termes (clone Times New Roman, rõ ràng, an toàn)
-\setmainfont{TeX Gyre Termes}[
-    Ligatures=TeX,
-    Scale=1.05 
-]
-
-% Sans-serif: TeX Gyre Heros (clone Helvetica – rõ, mạnh mẽ, hợp tiêu đề)
-\setsansfont{TeX Gyre Heros}[
-    Ligatures=TeX,
-    Scale=1.0
-]
-
-% Math font: Latin Modern Math (ổn định, rõ ràng)
+\setmainfont{TeX Gyre Termes}[Ligatures=TeX, Scale=1.05]
+\setsansfont{TeX Gyre Heros}[Ligatures=TeX, Scale=1.0]
 \setmathfont{Latin Modern Math}
 
-% ============================
-% Micro-typography
-% ============================
+% Microtype
 \usepackage[protrusion=true, expansion=true]{microtype}
 \microtypesetup{spacing=true, kerning=true}
 
@@ -47,50 +29,47 @@
     bottom=2cm,
     left=2cm,
     right=2cm,
-    footskip=1.0cm
+    footskip=1cm
 ]{geometry}
 
-\pagestyle{empty} % no page numbering
+\pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setcounter{secnumdepth}{0} % no section numbering
+\setcounter{secnumdepth}{0}
 \raggedright
 \setlength{\columnsep}{0.15cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % PACKAGES
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{titlesec}      % section formatting
-\usepackage{tabularx, array} % tables
-\usepackage[dvipsnames]{xcolor} % colors
-\usepackage{enumitem}      % list formatting
-\usepackage{fontawesome5}  % icons
-\usepackage{amsmath}        % math
-\usepackage{hyperref}      % links
-\usepackage[pscoord]{eso-pic} % floating elements
-\usepackage{calc}          % calculate lengths
-\usepackage{bookmark}      % bookmarks
-\usepackage{lastpage}      % total pages
-\usepackage{changepage}    % adjustwidth
-\usepackage{paracol}        % multi-columns
-\usepackage{ifthen}        % conditionals
-\usepackage{needspace}     % avoid page breaks after titles
+\usepackage{titlesec}
+\usepackage{tabularx, array}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % COLORS
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-% MÀU XANH DƯƠNG ĐẬM
-\definecolor{primaryColor}{RGB}{0,0,200} 
-\definecolor{ruleColor}{RGB}{0,0,200} % Định nghĩa màu cho gạch ngang
+\definecolor{primaryColor}{RGB}{0,0,200}
+\definecolor{ruleColor}{RGB}{0,0,200}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION FORMATTING
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-% ĐÃ SỬA: Lệnh gạch ngang màu tùy chỉnh
 \newcommand{\coloredrule}{\color{ruleColor}\titlerule[1pt]} 
 
-% ĐÃ SỬA: Sử dụng \coloredrule thay vì \titlerule
-\titleformat{\section}{\needspace{4\baselineskip}\color{primaryColor}\bfseries\large}{}{0pt}{}[\vspace{1pt}\coloredrule]
-\titlespacing{\section}{-1pt}{0.3cm}{0.2cm}
+\titleformat{\section}{\color{primaryColor}\bfseries\large}{}{0pt}{}[\vspace{1pt}\coloredrule]
+\titlespacing{\section}{0pt}{0.3cm}{0.2cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % BULLET POINTS
@@ -129,6 +108,8 @@
 }{
     \end{adjustwidth}
 }
+
+\newcommand{\endonecolentry}{\end{adjustwidth}}
 
 \newenvironment{twocolentry}[2][]{
     \onecolentry
@@ -171,9 +152,9 @@
 % HYPERREF SETTINGS
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{
-    pdftitle={John Doe's CV},
-    pdfauthor={John Doe},
-    pdfcreator={LaTeX with RenderCV},
+    pdftitle={Ginko's CV},
+    pdfauthor={Ginko},
+    pdfcreator={XeLaTeX},
     colorlinks=true,
     urlcolor=primaryColor
 }
@@ -187,123 +168,87 @@
 % HEADER
 %==============================
 \begin{header}
-    \fontsize{25pt}{25pt}\selectfont John Doe
+    \fontsize{25pt}{25pt}\selectfont Ginko
 
     \vspace{5pt}
 
     \normalsize
-    \mbox{Your Location}%
-    \kern 5.0pt%
+    \mbox{Vietnam}%
+    \kern 5pt%
     \AND%
-    \kern 5.0pt%
-    \mbox{\href{mailto:youremail@yourdomain.com}{youremail@yourdomain.com}}%
-    \kern 5.0pt%
+    \kern 5pt%
+    \mbox{\href{mailto:tranhaobku2017@gmail.com}{tranhaobku2017@gmail.com}}%
+    \kern 5pt%
     \AND%
-    \kern 5.0pt%
-    \mbox{\href{tel:+90-541-999-99-99}{0541 999 99 99}}%
-    \kern 5.0pt%
+    \kern 5pt%
+    \mbox{\href{tel:+847912345678}{+84 791 234 568}}%
+    \kern 5pt%
     \AND%
-    \kern 5.0pt%
-    \mbox{\href{https://yourwebsite.com/}{yourwebsite.com}}%
-    \kern 5.0pt%
-    \AND%
-    \kern 5.0pt%
-    \mbox{\href{https://linkedin.com/in/yourusername}{linkedin.com/in/yourusername}}%
-    \kern 5.0pt%
-    \AND%
-    \kern 5.0pt%
-    \mbox{\href{https://github.com/yourusername}{github.com/yourusername}}%
+    \kern 5pt%
+    \mbox{\href{https://github.com/ginko}{github.com/ginko}}%
 \end{header}
 
-\vspace{5pt - 0.3cm}
+\vspace{0.2cm}
 
 %==============================
 % SECTIONS
 %==============================
 
-\section{Welcome to RenderCV!}
-\begin{onecolentry}
-\href{https://rendercv.com}{RenderCV} is a LaTeX-based CV/resume version-control and maintenance app. It allows you to create a high-quality CV or resume as a PDF file from a YAML file, with \textbf{Markdown syntax support} and \textbf{complete control over the LaTeX code}.
-\end{onecolentry}
-
-\vspace{0.2cm}
-
-\begin{onecolentry}
-The boilerplate content was inspired by \href{https://github.com/dnl-blkv/mcdowell-cv}{Gayle McDowell}.
-\end{onecolentry}
-
-\section{Quick Guide}
-\begin{onecolentry}
-\begin{highlightsforbulletentries}
-    \item Each section title is arbitrary and each section contains a list of entries.
-    \item There are 7 unique entry types: \textit{BulletEntry}, \textit{TextEntry}, \textit{EducationEntry}, \textit{ExperienceEntry}, \textit{NormalEntry}, \textit{PublicationEntry}, and \textit{OneLineEntry}.
-    \item Select a section title, pick an entry type, and start writing your section!
-    \item \href{https://docs.rendercv.com/user_guide/}{Here}, you can find a comprehensive user guide for RenderCV.
-\end{highlightsforbulletentries}
-\end{onecolentry}
-
+\needspace{4\baselineskip}
 \section{Education}
-\begin{twocolentry}{Sept 2000 – May 2005}
-    \textbf{University of Pennsylvania}, BS in Computer Science
+\begin{twocolentry}{2018 – 2022}
+    \textbf{Bachelor of Engineering in Electrical Engineering}, University Name
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
-    \item GPA: 3.9/4.0 (\href{https://example.com}{link})
-    \item \textbf{Coursework:} Computer Architecture, Comparison of Learning Algorithms, Computational Theory
+    \item Major: Embedded Systems, Telecommunications
+    \item GPA: X.X/4.0
 \end{highlights}
 \end{onecolentry}
 
+\needspace{4\baselineskip}
 \section{Experience}
-\begin{twocolentry}{June 2005 – Aug 2007}
-    \textbf{Software Engineer}, Apple -- Cupertino, CA
+\begin{twocolentry}{2022 – Present}
+    \textbf{Embedded Systems Engineer}, Company Name -- Vietnam
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
-    \item Reduced time to render user buddy lists by 75\% by implementing a prediction algorithm
-    \item Integrated iChat with Spotlight Search by creating a tool to extract metadata from saved chat transcripts
-    \item Redesigned chat file format and implemented backward compatibility
+    \item Developing and maintaining ESP32 projects with modular components (UART, I2C, PWM, GPIO, MQTT, GPS)
+    \item Designing professional C components compatible with ESP-IDF v5.x
+    \item Optimizing FreeRTOS tasks and embedded communication protocols
 \end{highlights}
 \end{onecolentry}
 
-\begin{twocolentry}{June 2003 – Aug 2003}
-    \textbf{Software Engineer Intern}, Microsoft -- Redmond, WA
-\end{twocolentry}
-\begin{onecolentry}
-\begin{highlights}
-    \item Designed a UI for VS open file switcher (Ctrl-Tab) and extended it to tool windows
-    \item Automated extraction and processing of large datasets from legacy systems using SQL and Perl scripts
-\end{highlights}
-\end{onecolentry}
-
-\section{Publications}
-\begin{twocolentry}{Jan 2004}
-    \textbf{3D Finite Element Analysis of No-Insulation Coils}
-\end{twocolentry}
-\begin{onecolentry}
-\mbox{Frodo Baggins}, \textbf{\textit{John Doe}}, Samwise Gamgee
-
-\vspace{0.1cm}
-\href{https://doi.org/10.1109/TASC.2023.3340648}{10.1109/TASC.2023.3340648}
-\end{onecolentry}
-
+\needspace{4\baselineskip}
 \section{Projects}
-\begin{twocolentry}{\href{https://github.com/sinaatalay/rendercv}{github.com/name/repo}}
-    \textbf{Multi-User Drawing Tool}
+\begin{twocolentry}{2025}
+    \textbf{Fall Detection System on ESP32}
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
-    \item Developed an electronic classroom with synchronized multi-user chalkboard
-    \item Tools Used: C++, MFC
+    \item Components: MPU6050, Buzzer, LED, SIM4G-GPS, MQTT, Wi-Fi
+    \item Implemented modular architecture for professional reusability
+    \item Alert system: buzzer + SMS + MQTT notification on fall detection
 \end{highlights}
 \end{onecolentry}
 
-\section{Technologies}
+\needspace{4\baselineskip}
+\section{Skills \& Technologies}
 \begin{onecolentry}
-\textbf{Languages:} C++, C, Java, Objective-C, C\#, SQL, JavaScript
+\begin{highlights}
+    \item \textbf{Languages:} C, C++, Python, Shell, SQL
+    \item \textbf{Embedded:} ESP32, FreeRTOS, UART, I2C, PWM, GPIO, SPI
+    \item \textbf{Tools:} ESP-IDF, Git, Linux CLI, tmux, Neovim
+\end{highlights}
 \end{onecolentry}
 
+\needspace{4\baselineskip}
+\section{Publications}
+\begin{twocolentry}{2023}
+    \textbf{Industrial IoT Communication Protocols Analysis}
+\end{twocolentry}
 \begin{onecolentry}
-\textbf{Technologies:} .NET, Microsoft SQL Server, XCode, Interface Builder
+\href{https://doi.org/example}{DOI link if available}
 \end{onecolentry}
 
 \end{document}
