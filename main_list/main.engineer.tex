@@ -1,0 +1,240 @@
+
+\documentclass[10pt, letterpaper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FONT & ENCODING
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{vietnamese}
+\setotherlanguage{english}
+\usepackage{unicode-math}
+
+% Fonts
+\setmainfont{TeX Gyre Termes}[Ligatures=TeX,Scale=1.05]
+\setsansfont{TeX Gyre Heros}[Ligatures=TeX,Scale=1.0]
+\setmathfont{Latin Modern Math}
+
+% Micro-typography
+\usepackage[protrusion=true, expansion=true]{microtype}
+\microtypesetup{spacing=true, kerning=true}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PAGE LAYOUT
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[
+    ignoreheadfoot,
+    top=2cm,
+    bottom=2cm,
+    left=2cm,
+    right=2cm,
+    footskip=1.0cm
+]{geometry}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setcounter{secnumdepth}{0}
+\raggedright
+\setlength{\columnsep}{0.15cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{titlesec, tabularx, array, xcolor, enumitem, fontawesome5, amsmath, hyperref, graphicx, adjustbox, calc, bookmark, lastpage, changepage, needspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{primaryColor}{RGB}{0,0,200}
+\definecolor{ruleColor}{RGB}{0,0,200}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION FORMATTING
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\coloredrule}{\color{ruleColor}\titlerule[1pt]}
+\titleformat{\section}{\needspace{4\baselineskip}\color{primaryColor}\bfseries\large}{}{0pt}{}[\vspace{1pt}\coloredrule]
+\titlespacing{\section}{-1pt}{0.3cm}{0.2cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BULLET POINTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+\newenvironment{highlights}{
+    \begin{itemize}[topsep=0.10cm,parsep=0.10cm,partopsep=0pt,itemsep=0pt,leftmargin=10pt]
+}{
+    \end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLUMN ENTRY ENVIRONMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{onecolentry}{\begin{adjustwidth}{0pt}{0pt}}{\end{adjustwidth}}
+
+\newenvironment{twocolentry}[2]{%
+\noindent
+\begin{minipage}[t]{0.7\textwidth}%
+#2
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.28\textwidth}%
+\raggedleft #1
+\end{minipage}%
+\vspace{0.2cm}%
+}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HEADER ENVIRONMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HYPERREF SETTINGS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    pdftitle={Tran GinKo's CV},
+    pdfauthor={Tran GinKo},
+    pdfcreator={XeLaTeX},
+    colorlinks=true,
+    urlcolor=primaryColor
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%==============================
+% HEADER CÓ AVATAR
+%==============================
+\begin{header}
+\begin{minipage}[c]{0.7\textwidth} % cột trái
+    {\fontsize{25pt}{25pt}\selectfont Tran GinKo}
+
+    \vspace{1pt} % giảm khoảng cách, không phải 3pt
+
+    \normalsize
+    \vspace{-2pt} % đẩy tabular lên 1 chút
+    \begin{tabular}{@{}l@{}}
+        Ho Chi Minh City, Vietnam \\
+        \href{mailto:tranhaobku2017@gmail.com}{tranhaobku2017@gmail.com} \\
+        \href{tel:+847912345678}{+84 791 234 568} \\
+        \href{https://github.com/ginko}{github.com/ginko} \\
+        \href{https://www.linkedin.com/in/placeholder}{linkedin.com/in/placeholder}
+    \end{tabular}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.3\textwidth} % cột phải (avatar)
+    \raggedleft
+    \includegraphics[width=4cm,height=4cm,keepaspectratio]{images/avatar.jpg}
+\end{minipage}
+\end{header}
+\vspace{0.5cm} 
+
+%==============================
+% SUMMARY
+%==============================
+\section{Summary}
+\begin{onecolentry}
+\begin{highlights}
+    \item Embedded Systems Engineer with expertise in ESP32, FreeRTOS, MQTT, and industrial IoT applications.
+    \item Skilled in modular, reusable C/C++ component design, professional firmware architecture, and system debugging
+
+%==============================
+% EDUCATION
+%==============================
+\section{Education}
+\begin{twocolentry}{2021 -- 2025}{%
+    \textbf{Bachelor of Engineering in Electrical Engineering}, Ho Chi Minh University of Technology (HCMUT)
+}
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item Graduated: 2025, Engineer Degree
+    \item Focus: Embedded Systems, Telecommunications
+    \item Coursework: Digital Systems, Microcontrollers, Signal Processing, Telecommunication Techniques
+    \item GPA: Placeholder
+\end{highlights}
+\end{onecolentry}
+
+%==============================
+% EXPERIENCE
+%==============================
+\section{Experience}
+\begin{twocolentry}{2022 -- Present}{%
+    \textbf{Embedded Systems Engineer}, Industrial IoT Company, Ho Chi Minh City
+}
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item Develop ESP32-based IoT solutions with modular component architecture.
+    \item Work with UART, I2C, PWM, GPIO, MQTT, Wi-Fi, and SIM4G modules.
+    \item Implement professional logging and debugging for embedded devices.
+    \item Manage firmware updates, OTA, and system monitoring.
+\end{highlights}
+\end{onecolentry}
+
+\begin{twocolentry}{2021 -- 2022}{%
+    \textbf{Intern – Embedded Systems}, Research Lab, Ho Chi Minh City
+}
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item Assisted in designing MCU-based sensor systems and data acquisition modules.
+    \item Wrote driver-level code for UART/I2C sensors and communication modules.
+\end{highlights}
+\end{onecolentry}
+
+%==============================
+% PROJECTS
+%==============================
+\section{Projects}
+\begin{twocolentry}{2023}{%
+    \textbf{Fall Detection System (ESP32, MPU6050, SIM4G-GPS)}
+}
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item Detects falls using accelerometer, triggers buzzer/LED, sends SMS alerts.
+    \item Modular components: fall\_logic, mqtt\_client, comm, led\_indicator.
+    \item Technologies: ESP-IDF, FreeRTOS, MQTT, UART, I2C, PWM.
+\end{highlights}
+\end{onecolentry}
+
+\begin{twocolentry}{2022}{%
+    \textbf{IoT Environmental Monitoring}
+}
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item Monitors temperature, humidity, and air quality via ESP32 sensors.
+    \item Real-time data displayed via MQTT broker to dashboard.
+\end{highlights}
+\end{onecolentry}
+
+%==============================
+% SKILLS
+%==============================
+\section{Skills}
+\begin{onecolentry}
+\begin{highlights}
+    \item \textbf{Languages:} C, C++, Python, C\#, SQL, Bash
+    \item \textbf{Technologies:} ESP32, FreeRTOS, MQTT, UART, I2C, PWM, GPIO, Wi-Fi, SIM4G
+    \item \textbf{Tools:} ESP-IDF, Git, PlatformIO, Linux, VSCode, Makefile
+\end{highlights}
+\end{onecolentry}
+
+%==============================
+% LANGUAGES
+%==============================
+\section{Languages}
+\begin{onecolentry}
+\begin{highlights}
+    \item Vietnamese (Native), English (Professional)
+\end{highlights}
+\end{onecolentry}
+
+\end{document}
