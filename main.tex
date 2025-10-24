@@ -9,14 +9,14 @@
 \usepackage{polyglossia}
 \setmainlanguage{vietnamese}
 \setotherlanguage{english}
+\usepackage{unicode-math}
 
 % Fonts
-\usepackage{unicode-math}
-\setmainfont{TeX Gyre Termes}[Ligatures=TeX, Scale=1.05]
-\setsansfont{TeX Gyre Heros}[Ligatures=TeX, Scale=1.0]
+\setmainfont{TeX Gyre Termes}[Ligatures=TeX,Scale=1.05]
+\setsansfont{TeX Gyre Heros}[Ligatures=TeX,Scale=1.0]
 \setmathfont{Latin Modern Math}
 
-% Microtype
+% Micro-typography
 \usepackage[protrusion=true, expansion=true]{microtype}
 \microtypesetup{spacing=true, kerning=true}
 
@@ -29,7 +29,7 @@
     bottom=2cm,
     left=2cm,
     right=2cm,
-    footskip=1cm
+    footskip=1.0cm
 ]{geometry}
 
 \pagestyle{empty}
@@ -41,21 +41,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % PACKAGES
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{titlesec}
-\usepackage{tabularx, array}
-\usepackage[dvipsnames]{xcolor}
-\usepackage{enumitem}
-\usepackage{fontawesome5}
-\usepackage{amsmath}
-\usepackage{hyperref}
-\usepackage[pscoord]{eso-pic}
-\usepackage{calc}
-\usepackage{bookmark}
-\usepackage{lastpage}
-\usepackage{changepage}
-\usepackage{paracol}
-\usepackage{ifthen}
-\usepackage{needspace}
+\usepackage{titlesec, tabularx, array, xcolor, enumitem, fontawesome5, amsmath, hyperref, graphicx, eso-pic, calc, bookmark, lastpage, changepage, paracol, ifthen, needspace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % COLORS
@@ -66,36 +52,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION FORMATTING
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\coloredrule}{\color{ruleColor}\titlerule[1pt]} 
-
-\titleformat{\section}{\color{primaryColor}\bfseries\large}{}{0pt}{}[\vspace{1pt}\coloredrule]
-\titlespacing{\section}{0pt}{0.3cm}{0.2cm}
+\newcommand{\coloredrule}{\color{ruleColor}\titlerule[1pt]}
+\titleformat{\section}{\needspace{4\baselineskip}\color{primaryColor}\bfseries\large}{}{0pt}{}[\vspace{1pt}\coloredrule]
+\titlespacing{\section}{-1pt}{0.3cm}{0.2cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % BULLET POINTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
-
 \newenvironment{highlights}{
-    \begin{itemize}[
-        topsep=0.10cm,
-        parsep=0.10cm,
-        partopsep=0pt,
-        itemsep=0pt,
-        leftmargin=10pt
-    ]
+    \begin{itemize}[topsep=0.10cm,parsep=0.10cm,partopsep=0pt,itemsep=0pt,leftmargin=10pt]
 }{
     \end{itemize}
 }
-
 \newenvironment{highlightsforbulletentries}{
-    \begin{itemize}[
-        topsep=0.10cm,
-        parsep=0.10cm,
-        partopsep=0pt,
-        itemsep=0pt,
-        leftmargin=10pt
-    ]
+    \begin{itemize}[topsep=0.10cm,parsep=0.10cm,partopsep=0pt,itemsep=0pt,leftmargin=10pt]
 }{
     \end{itemize}
 }
@@ -103,14 +74,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % COLUMN ENTRY ENVIRONMENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\newenvironment{onecolentry}{
-    \begin{adjustwidth}{0pt}{0pt}
-}{
-    \end{adjustwidth}
-}
-
-\newcommand{\endonecolentry}{\end{adjustwidth}}
-
+\newenvironment{onecolentry}{\begin{adjustwidth}{0pt}{0pt}}{\end{adjustwidth}}
 \newenvironment{twocolentry}[2][]{
     \onecolentry
     \def\secondColumn{#2}
@@ -120,7 +84,6 @@
     \end{paracol}
     \endonecolentry
 }
-
 \newenvironment{threecolentry}[3][]{
     \onecolentry
     \def\thirdColumn{#3}
@@ -140,11 +103,7 @@
 }{
     \par\kern\topsep
 }
-
-\newcommand{\AND}{\unskip
-    \cleaders\copy\ANDbox\hskip\wd\ANDbox
-    \ignorespaces
-}
+\newcommand{\AND}{\unskip \cleaders\copy\ANDbox\hskip\wd\ANDbox \ignorespaces}
 \newsavebox\ANDbox
 \sbox\ANDbox{$|$}
 
@@ -165,12 +124,13 @@
 \begin{document}
 
 %==============================
-% HEADER
+% HEADER CÓ AVATAR
 %==============================
 \begin{header}
+\begin{minipage}[t]{0.7\textwidth}
     \fontsize{25pt}{25pt}\selectfont Ginko
 
-    \vspace{5pt}
+    \vspace{3pt}
 
     \normalsize
     \mbox{Vietnam}%
@@ -186,69 +146,69 @@
     \AND%
     \kern 5pt%
     \mbox{\href{https://github.com/ginko}{github.com/ginko}}%
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.25\textwidth}
+    \raggedleft
+    \includegraphics[width=3cm,height=3cm,keepaspectratio]{images/avatar.jpg}
+\end{minipage}
 \end{header}
 
-\vspace{0.2cm}
+\vspace{5pt - 0.3cm}
 
 %==============================
-% SECTIONS
+% EDUCATION
 %==============================
-
-\needspace{4\baselineskip}
 \section{Education}
 \begin{twocolentry}{2018 – 2022}
-    \textbf{Bachelor of Engineering in Electrical Engineering}, University Name
+    \textbf{Bachelor of Electrical Engineering}, Hanoi University of Science and Technology
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
-    \item Major: Embedded Systems, Telecommunications
-    \item GPA: X.X/4.0
+    \item Focus: Embedded Systems, Telecommunications
+    \item GPA: 3.8/4.0
 \end{highlights}
 \end{onecolentry}
 
-\needspace{4\baselineskip}
+%==============================
+% EXPERIENCE
+%==============================
 \section{Experience}
 \begin{twocolentry}{2022 – Present}
-    \textbf{Embedded Systems Engineer}, Company Name -- Vietnam
+    \textbf{Embedded Systems Engineer}, Industrial IoT Company, Hanoi
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
-    \item Developing and maintaining ESP32 projects with modular components (UART, I2C, PWM, GPIO, MQTT, GPS)
-    \item Designing professional C components compatible with ESP-IDF v5.x
-    \item Optimizing FreeRTOS tasks and embedded communication protocols
+    \item Develop ESP32-based IoT solutions with modular architecture
+    \item Work with UART, I2C, PWM, GPIO, MQTT, Wi-Fi, SIM4G modules
+    \item Write reusable components and professional C/C++ drivers
 \end{highlights}
 \end{onecolentry}
 
-\needspace{4\baselineskip}
+%==============================
+% PROJECTS
+%==============================
 \section{Projects}
-\begin{twocolentry}{2025}
-    \textbf{Fall Detection System on ESP32}
-\end{twocolentry}
-\begin{onecolentry}
-\begin{highlights}
-    \item Components: MPU6050, Buzzer, LED, SIM4G-GPS, MQTT, Wi-Fi
-    \item Implemented modular architecture for professional reusability
-    \item Alert system: buzzer + SMS + MQTT notification on fall detection
-\end{highlights}
-\end{onecolentry}
-
-\needspace{4\baselineskip}
-\section{Skills \& Technologies}
-\begin{onecolentry}
-\begin{highlights}
-    \item \textbf{Languages:} C, C++, Python, Shell, SQL
-    \item \textbf{Embedded:} ESP32, FreeRTOS, UART, I2C, PWM, GPIO, SPI
-    \item \textbf{Tools:} ESP-IDF, Git, Linux CLI, tmux, Neovim
-\end{highlights}
-\end{onecolentry}
-
-\needspace{4\baselineskip}
-\section{Publications}
 \begin{twocolentry}{2023}
-    \textbf{Industrial IoT Communication Protocols Analysis}
+    \textbf{Fall Detection System with ESP32}
 \end{twocolentry}
 \begin{onecolentry}
-\href{https://doi.org/example}{DOI link if available}
+\begin{highlights}
+    \item Sensor: MPU6050, LED, Buzzer, SIM4G-GPS
+    \item Features: Fall detection, SMS alert, modular component design
+    \item Technologies: ESP-IDF, FreeRTOS, MQTT
+\end{highlights}
+\end{onecolentry}
+
+%==============================
+% TECHNOLOGIES
+%==============================
+\section{Technologies}
+\begin{onecolentry}
+\textbf{Languages:} C, C++, Python
+\end{onecolentry}
+\begin{onecolentry}
+\textbf{Tools \& Frameworks:} ESP-IDF, FreeRTOS, Git, Linux
 \end{onecolentry}
 
 \end{document}
