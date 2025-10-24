@@ -20,7 +20,7 @@
 % Main serif font: TeX Gyre Termes (clone Times New Roman, rõ ràng, an toàn)
 \setmainfont{TeX Gyre Termes}[
     Ligatures=TeX,
-    Scale=1.05 % hơi lớn hơn chút, dễ đọc khi in
+    Scale=1.05 
 ]
 
 % Sans-serif: TeX Gyre Heros (clone Helvetica – rõ, mạnh mẽ, hợp tiêu đề)
@@ -78,14 +78,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % COLORS
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-% ĐÃ SỬA: Đổi màu chính từ đen sang xanh đậm (Dark Blue)
-\definecolor{primaryColor}{RGB}{0,0,200} % Dark Blue
+% MÀU XANH DƯƠNG ĐẬM
+\definecolor{primaryColor}{RGB}{0,0,200} 
+\definecolor{ruleColor}{RGB}{0,0,200} % Định nghĩa màu cho gạch ngang
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION FORMATTING
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-% ĐÃ SỬA: Thêm \color{primaryColor} vào titleformat để đổi màu tiêu đề và gạch ngang
-\titleformat{\section}{\needspace{4\baselineskip}\color{primaryColor}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule[1pt]]
+% ĐÃ SỬA: Lệnh gạch ngang màu tùy chỉnh
+\newcommand{\coloredrule}{\color{ruleColor}\titlerule[1pt]} 
+
+% ĐÃ SỬA: Sử dụng \coloredrule thay vì \titlerule
+\titleformat{\section}{\needspace{4\baselineskip}\color{primaryColor}\bfseries\large}{}{0pt}{}[\vspace{1pt}\coloredrule]
 \titlespacing{\section}{-1pt}{0.3cm}{0.2cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -182,7 +186,6 @@
 %==============================
 % HEADER
 %==============================
-% Gợi ý: Bạn có thể thêm \color{primaryColor} vào đây nếu muốn tên John Doe cũng màu xanh
 \begin{header}
     \fontsize{25pt}{25pt}\selectfont John Doe
 
@@ -260,7 +263,7 @@ The boilerplate content was inspired by \href{https://github.com/dnl-blkv/mcdowe
     \item Integrated iChat with Spotlight Search by creating a tool to extract metadata from saved chat transcripts
     \item Redesigned chat file format and implemented backward compatibility
 \end{highlights}
-\end="onecolentry"}
+\end{onecolentry}
 
 \begin{twocolentry}{June 2003 – Aug 2003}
     \textbf{Software Engineer Intern}, Microsoft -- Redmond, WA
