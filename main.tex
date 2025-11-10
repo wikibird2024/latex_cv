@@ -1,139 +1,225 @@
 
-\documentclass[11pt, a4paper]{article}
+\documentclass[10pt, letterpaper]{article}
 
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[british]{babel}
-\usepackage[left = 0mm, right = 0mm, top = 0mm, bottom = 0mm]{geometry}
-\usepackage[stretch = 25, shrink = 25, tracking=true, letterspace=30]{microtype}
-\usepackage{graphicx}
-\usepackage{xcolor}
-\usepackage{marvosym}
+% Packages
+\usepackage[
+    ignoreheadfoot,
+    top=2 cm,
+    bottom=2 cm,
+    left=2 cm,
+    right=2 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 0, 0}
 \usepackage{enumitem}
-\setlist{parsep = 0pt, topsep = 0pt, partopsep = 1pt, itemsep = 1pt, leftmargin = 6mm}
-\usepackage{FiraSans}
-\renewcommand{\familydefault}{\sfdefault}
-\definecolor{cvblue}{HTML}{304263}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={\CVName's CV},
+    pdfauthor={\CVName},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
 
-%%%%%%% USER COMMAND DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\dates}[1]{\hfill\mbox{\textbf{#1}}}
-\newcommand{\is}{\par\vskip.5ex plus .4ex}
-\newcommand{\smaller}[1]{{\small$\diamond$\ #1}}
-\newcommand{\headleft}[1]{\vspace*{3ex}\textsc{\textbf{#1}}\par%
-    \vspace*{-1.5ex}\hrulefill\par\vspace*{0.7ex}}
-\newcommand{\headright}[1]{\vspace*{2.5ex}\textsc{\Large\color{cvblue}#1}\par%
-     \vspace*{-2ex}{\color{cvblue}\hrulefill}\par}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
 
-\usepackage[colorlinks = true, urlcolor = white, linkcolor = white]{hyperref}
+\usepackage{charter}
 
+% =======================
+% MACROS
+% =======================
+\newcommand{\CVName}{Tran Duc Hao}
+\newcommand{\CVLocation}{Ho Chi Minh - Vietnam}
+\newcommand{\CVEmail}{tranhaobku2017@gmail.com}
+\newcommand{\CVPhone}{+84 999 999 999}
+\newcommand{\CVGitHub}{https://github.com/ginko}
+\newcommand{\CVLinkedIn}{https://linkedin.com/in/ginko}
+
+\newcommand{\CVUniversity}{Ho Chi Minh City University of Technology}
+
+% Settings
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0.15cm}
+\pagenumbering{gobble}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+
+\newenvironment{highlights}{
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0 cm + 10pt]
+}{
+    \end{itemize}
+}
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=10pt]
+}{
+    \end{itemize}
+}
+
+\newenvironment{onecolentry}{\begin{adjustwidth}{0 cm + 0.00001 cm}{0 cm + 0.00001 cm}}{\end{adjustwidth}}
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+}
+
+% =======================
+% DOCUMENT
+% =======================
 \begin{document}
 
-\setlength{\topskip}{0pt}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
-\setlength{\fboxsep}{0pt}
-\pagestyle{empty}
-\raggedbottom
+\newcommand{\AND}{\unskip\cleaders\copy\ANDbox\hskip\wd\ANDbox\ignorespaces}
+\newsavebox\ANDbox
+\sbox\ANDbox{$|$}
 
-\begin{minipage}[t]{0.33\textwidth}
-\colorbox{cvblue}{\begin{minipage}[t][5mm][t]{\textwidth}\null\hfill\null\end{minipage}}
+\begin{header}
+    \fontsize{25 pt}{25 pt}\selectfont \CVName
 
-\vspace{-.2ex}
-\colorbox{cvblue!90}{\color{white}
-\kern0.09\textwidth\relax
-\begin{minipage}[t][293mm][t]{0.82\textwidth}
-\raggedright
-\vspace*{2.5ex}
+    \vspace{5 pt}
 
-\Large Tran \textbf{\textsc{Duc Hao}} \normalsize
+    \normalsize
+    \mbox{\CVLocation}%
+    \kern 5.0 pt%
+    \AND%
+    \kern 5.0 pt%
+    \mbox{\href{mailto:\CVEmail}{\CVEmail}}%
+    \kern 5.0 pt%
+    \AND%
+    \kern 5.0 pt%
+    \mbox{\href{tel:\CVPhone}{\CVPhone}}%
+    \kern 5.0 pt%
+    \AND%
+    \kern 5.0 pt%
+    \mbox{\href{\CVGitHub}{GitHub}}%
+    \kern 5.0 pt%
+    \AND%
+    \kern 5.0 pt%
+    \mbox{\href{\CVLinkedIn}{LinkedIn}}%
+\end{header}
 
-\null\hfill\includegraphics[width=0.65\textwidth]{images/avarta.png}\hfill\null
+\vspace{5 pt - 0.3 cm}
 
-\vspace*{0.5ex}
-\headleft{Profile Summary}
+\section{Summary}
+\begin{onecolentry}
+Embedded Systems Engineer and Telecommunications Specialist with strong expertise in ESP32/ESP-IDF development, real-time systems (FreeRTOS), VoIP (Asterisk), Linux system administration, and network fundamentals (OSI model). Proficient in C/C++, Python, and modular embedded firmware design. Experienced in professional project structuring, component-based development, and MQTT/IoT communication protocols.
+\end{onecolentry}
 
-Recent Graduate (HCMUT, 2025) of \textbf{Electronics and Telecommunications Engineering}. Possessing a strong technical foundation in circuit design, network principles, and specialized project experience in \textit{Embedded Firmware Development}. Eager to contribute technical skills and a robust, methodical approach to challenging industrial projects.
+\section{Education}
+\begin{twocolentry}{} % ẩn năm
+    \textbf{Bachelor of Engineering, Telecommunications}, \CVUniversity
+\end{twocolentry}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Coursework: Embedded Systems, Digital Signal Processing, Network Protocols (TCP/IP, OSI), Linux Systems, Computer Architecture
+        \item GPA: 3.8/4.0
+    \end{highlights}
+\end{onecolentry}
 
-\textsc{Embedded Systems Developer} \textit{(Freelance / Independent Projects)} \dates{2020--Present}
+\section{Experience}
+\begin{twocolentry}{July 2023 – Present}
+    \textbf{Embedded Systems Engineer}, Freelance / Industrial IoT Projects
+\end{twocolentry}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Developed modular ESP32-based fall detection system integrating MPU6050, 4G-GPS, buzzer, LED indicators
+        \item Designed reusable ESP-IDF components (UART, I2C, PWM, GPIO, MQTT client)
+        \item Implemented real-time tasks using FreeRTOS with efficient memory and CPU usage
+        \item Structured embedded projects following clean architecture principles
+    \end{highlights}
+\end{onecolentry}
 
-\vspace*{-0.5ex}
+\begin{twocolentry}{Jan 2022 – June 2023}
+    \textbf{VoIP / Linux Systems Engineer}, VEEF VoIP Solutions
+\end{twocolentry}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Configured and maintained Asterisk-based VoIP systems on Linux servers
+        \item Implemented SIP trunking, call routing, and automated provisioning scripts
+        \item Monitored and troubleshooted network and VoIP performance issues
+        \item Developed Python scripts for system automation and log analysis
+    \end{highlights}
+\end{onecolentry}
 
-\headleft{Contact details}
-\small
-\MVAt\ {\small tranhaobku2017@gmail.com} \\[0.4ex]
-\Mobilefone\ +84\,912\,345\,678 \\[0.5ex]
-\Letter\ Viet Nam
-\normalsize
+\section{Projects}
+\begin{twocolentry}{2025}
+    \textbf{ESP32 Fall Detection System}
+\end{twocolentry}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Embedded firmware integrating MPU6050, EC800K 4G-GPS, buzzer, LED
+        \item Modular component design with MQTT communication and Wi-Fi connectivity
+        \item FreeRTOS task scheduling and real-time data handling
+    \end{highlights}
+\end{onecolentry}
 
-\headleft{Personal information}
-Nationality: \textbf{Vietnamese} \\[0.5ex]
-Languages: \textbf{English (Intermediate)}, \textbf{Vietnamese (Native)} \\[0.5ex]
-Location: \textbf{Ho Chi Minh City, Vietnam}
+\begin{twocolentry}{2024}
+    \textbf{VEEF VoIP System Deployment}
+\end{twocolentry}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Set up and maintained Asterisk VoIP servers with SIP trunking
+        \item Implemented call routing and automated provisioning scripts
+        \item Monitored call quality and network stability on Linux systems
+    \end{highlights}
+\end{onecolentry}
 
-\headleft{Technical Skills}
-\begin{itemize}
-  \item \textbf{Embedded Systems:} ESP32, STM32, FreeRTOS, UART/I2C/SPI/PWM/GPIO
-  \item \textbf{Programming:} C/C++, Python (data scripting, automation)
-  \item \textbf{Hardware & Sensors:} MPU6050, EC800K, GPS, GSM/4G modules
-  \item \textbf{Tools:} Git, CMake, ESP-IDF, STM32CubeIDE, Linux CLI, Neovim
-\end{itemize}
+\begin{twocolentry}{2023}
+    \textbf{Embedded Linux Network Utilities}
+\end{twocolentry}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Developed network monitoring and diagnostics tools on Linux
+        \item Implemented TCP/IP stack experiments, basic OSI-layer simulations
+        \item Tools Used: C, Python, Linux shell scripting
+    \end{highlights}
+\end{onecolentry}
 
-\end{minipage}%
-\kern0.09\textwidth\relax
-}
-\end{minipage}%
-\hskip2.5em
-\begin{minipage}[t]{0.56\textwidth}
-\setlength{\parskip}{0.8ex}
+\section{Technologies}
+\begin{onecolentry}
+    \textbf{Languages:} C, C++, Python, Bash, SQL, JavaScript
+\end{onecolentry}
 
-\vspace{2ex}
-
-\headright{Experience}
-
-\textsc{Embedded Systems Engineer} at \textit{Self-driven / Industrial Projects}  \dates{2020--Present} \\
-
-\smaller{\textbf{Developing and deploying embedded firmware for IoT and Industrial applications, focusing on real-time performance and scalability.}}
-
-\is
-\smaller{\textbf{Firmware Architecture:} Designed and implemented \textbf{modular firmware architecture} (\textit{Component-based approach}) using \textbf{ESP-IDF (ESP32)} and STM32CubeIDE, enhancing development speed and maintainability.}
-
-\is
-\smaller{\textbf{Real-Time Systems (RTOS):} Expertly leveraged \textbf{FreeRTOS} for task management (Tasks, Queues, Semaphores), \textbf{optimizing} scheduling to ensure real-time responsiveness in monitoring systems.}
-
-\is
-\smaller{\textbf{Development Workflow:} Maintained a professional development process using \textbf{Git/GitHub}, applying modern \textbf{C/C++} coding standards and detailed documentation.}
-
-\vspace*{1ex}
-\headright{Featured Project: ESP32 Fall Detection \& Location System}
-\vspace*{-1ex}
-
-\smaller{\textbf{Independent Fall Detection System:} Designed and deployed \textbf{modular} firmware on the ESP32 to detect falls, send emergency alerts, and stream real-time data.}
-
-\is
-\smaller{Developed the Fall Detection logic using \textbf{MPU6050} data and integrated the \textbf{4G/GPS} module to send emergency \textbf{SMS alerts} with real-time GPS coordinates.}
-
-\is
-\smaller{Published system status, event data, and GPS location to an \textbf{MQTT Broker} periodically, enabling remote monitoring.}
-
-
-\headright{Education}
-
-\textsc{Engineer’s Degree in Electronics and Telecommunications} \textit{— Ho Chi Minh City University of Technology (HCMUT)} \hfill \dates{Graduated: 2025} \\
-
-\headright{Certifications}
-
-\smaller{\textsc{Embedded Systems Programming with ESP32/STM32,} \textit{Self-study/Online Courses}} \\
-\is
-\smaller{\textsc{FreeRTOS and RTOS Concepts}} \\
-\is
-\smaller{\textsc{Python for Embedded / Data Processing}} \\
-\is
-\smaller{\textsc{Git & Version Control for Collaborative Development}}
-
-\headright{Technical nterests}
-
-\textit{Reading technical blogs, experimenting with embedded projects, coding, cycling}
-\end{minipage}
+\begin{onecolentry}
+    \textbf{Technologies:} ESP32/ESP-IDF, FreeRTOS, MQTT, Asterisk VoIP, Linux, TCP/IP, SIP, I2C, UART, PWM, GPIO
+\end{onecolentry}
 
 \end{document}
