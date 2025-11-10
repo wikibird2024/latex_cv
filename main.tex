@@ -1,6 +1,5 @@
 
-
-\documentclass[10pt, letterpaper]{article}
+\documentclass[11pt, letterpaper]{article} % 11pt cho dễ đọc
 
 % Packages
 \usepackage[
@@ -44,7 +43,7 @@
     \usepackage{lmodern}
 \fi
 
-\usepackage{charter}
+\usepackage{charter} % font chuyên nghiệp, dễ đọc
 
 % =======================
 % MACROS
@@ -68,18 +67,12 @@
 \setlength{\columnsep}{0.15cm}
 \pagenumbering{gobble}
 
-\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\Large}{}{0pt}{}[\vspace{1pt}\titlerule]
 \titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
 \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
 
 \newenvironment{highlights}{
     \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0 cm + 10pt]
-}{
-    \end{itemize}
-}
-
-\newenvironment{highlightsforbulletentries}{
-    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=10pt]
 }{
     \end{itemize}
 }
@@ -113,7 +106,7 @@
 \sbox\ANDbox{$|$}
 
 \begin{header}
-    \fontsize{25 pt}{25 pt}\selectfont \CVName
+    \fontsize{28 pt}{28 pt}\selectfont \CVName
 
     \vspace{5 pt}
 
@@ -141,85 +134,85 @@
 
 \section{Summary}
 \begin{onecolentry}
-Embedded Systems Engineer and Telecommunications Specialist with strong expertise in ESP32/ESP-IDF development, real-time systems (FreeRTOS), VoIP (Asterisk), Linux system administration, and network fundamentals (OSI model). Proficient in C/C++, Python, and modular embedded firmware design. Experienced in professional project structuring, component-based development, and MQTT/IoT communication protocols.
+Embedded Systems and Telecommunications enthusiast with hands-on experience in Linux, Python, C, and MCU-based embedded projects. Knowledgeable in network protocols (OSI layers, TCP/IP, SIP) and electronics fundamentals. Familiar with FreeRTOS, modular project design, CMake-based build, hardware interfacing, PCB design, and simulation tools like KiCad and Cadence. Quick to learn new technologies and adapt to professional engineering environments.
 \end{onecolentry}
 
 \section{Education}
-\begin{onecolentry}{} % ẩn năm
+\begin{onecolentry}
     \textbf{Bachelor of Engineering, Telecommunications}, \CVUniversity
 \end{onecolentry}
+
 \begin{onecolentry}
     \begin{highlights}
-        \item Coursework: Embedded Systems, Digital Signal Processing, Network Protocols (TCP/IP, OSI), Linux Systems, Computer Architecture
+        \item Relevant coursework: Embedded Systems, Microcontroller Programming (ESP32, ARM), Real-Time Systems (FreeRTOS), Digital Electronics \& Digital System Design, PCB Design (KiCad, Cadence), Network Protocols (TCP/IP, OSI, SIP), Linux Systems \& Shell Scripting, Computer Architecture, IoT Applications and Communication Protocols (MQTT, Wi-Fi, Sensors/Actuators)
     \end{highlights}
 \end{onecolentry}
 
 \section{Experience}
 \begin{twocolentry}{July 2023 – Present}
-    \textbf{Embedded Systems Engineer}, Freelance / Industrial IoT Projects
+    \textbf{Embedded Systems / Linux Developer}, Freelance Projects
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item Developed modular ESP32-based fall detection system integrating MPU6050, 4G-GPS, buzzer, LED indicators
-        \item Designed reusable ESP-IDF components (UART, I2C, PWM, GPIO, MQTT client)
-        \item Implemented real-time tasks using FreeRTOS with efficient memory and CPU usage
-        \item Structured embedded projects following clean architecture principles
+        \item Developed modular embedded systems using ESP32, FreeRTOS, and peripheral interfacing
+        \item Wrote reusable C/Python modules for hardware communication (UART, I2C, PWM, GPIO)
+        \item Utilized CMake and modular architecture for maintainable project structure
+        \item Applied Linux scripting and tools for development and testing
     \end{highlights}
 \end{onecolentry}
 
 \begin{twocolentry}{Jan 2022 – June 2023}
-    \textbf{VoIP / Linux Systems Engineer}, VEEF VoIP Solutions
+    \textbf{Telecommunications / Linux Intern}, VEEF VoIP Solutions
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item Configured and maintained Asterisk-based VoIP systems on Linux servers
-        \item Implemented SIP trunking, call routing, and automated provisioning scripts
-        \item Monitored and troubleshooted network and VoIP performance issues
-        \item Developed Python scripts for system automation and log analysis
+        \item Learned and assisted in VoIP deployment (Asterisk, SIP) and Linux server management
+        \item Developed Python scripts for automation and log processing
+        \item Monitored network performance and assisted troubleshooting
     \end{highlights}
 \end{onecolentry}
 
 \section{Projects}
 \begin{twocolentry}{2025}
-    \textbf{ESP32 Fall Detection System}
+    \textbf{ESP32 Fall Detection System (Learning Project)}
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
         \item Embedded firmware integrating MPU6050, EC800K 4G-GPS, buzzer, LED
-        \item Modular component design with MQTT communication and Wi-Fi connectivity
-        \item FreeRTOS task scheduling and real-time data handling
+        \item Modular component design with FreeRTOS tasks and MQTT communication
+        \item Applied hardware interfacing and real-time scheduling
     \end{highlights}
 \end{onecolentry}
 
-\begin{twocolentry}{2024}
-    \textbf{VEEF VoIP System Deployment}
+\begin{twocolentry}{2023-2024}
+    \textbf{Embedded Linux / Networking Utilities}
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item Set up and maintained Asterisk VoIP servers with SIP trunking
-        \item Implemented call routing and automated provisioning scripts
-        \item Monitored call quality and network stability on Linux systems
+        \item Developed Linux-based network monitoring and diagnostic scripts/tools
+        \item Explored TCP/IP stack and OSI-layer concepts via C and Python
     \end{highlights}
 \end{onecolentry}
 
-\begin{twocolentry}{2023}
-    \textbf{Embedded Linux Network Utilities}
-\end{twocolentry}
+\section{Skills}
 \begin{onecolentry}
-    \begin{highlights}
-        \item Developed network monitoring and diagnostics tools on Linux
-        \item Implemented TCP/IP stack experiments, basic OSI-layer simulations
-        \item Tools Used: C, Python, Linux shell scripting
-    \end{highlights}
-\end{onecolentry}
-
-\section{Technologies}
-\begin{onecolentry}
-    \textbf{Languages:} C, C++, Python, Bash, SQL, JavaScript
+    \textbf{Programming Languages:} C, C++, Python, Bash
 \end{onecolentry}
 
 \begin{onecolentry}
-    \textbf{Technologies:} ESP32/ESP-IDF, FreeRTOS, MQTT, Asterisk VoIP, Linux, TCP/IP, SIP, I2C, UART, PWM, GPIO
+    \textbf{Tools \& Software:} ESP-IDF, FreeRTOS, MQTT, Linux, KiCad, Cadence, CMake, Asterisk
+\end{onecolentry}
+
+\begin{onecolentry}
+    \textbf{Hardware \& Embedded Knowledge:} GPIO, UART, I2C, PWM, SPI, ESP32 peripherals, Sensors \& Actuators, PCB Design, Real-Time Systems
+\end{onecolentry}
+
+\begin{onecolentry}
+    \textbf{Networking \& Protocols:} TCP/IP, SIP, MQTT, Wi-Fi
+\end{onecolentry}
+
+\begin{onecolentry}
+    \textbf{Languages:} Vietnamese (native), English (professional proficiency)
 \end{onecolentry}
 
 \end{document}
