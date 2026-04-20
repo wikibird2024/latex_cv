@@ -1,218 +1,104 @@
-\documentclass[11pt, letterpaper]{article} % dễ đọc
+\documentclass[11pt, a4paper]{article}
 
-% Packages
+% --- PACKAGES ---
 \usepackage[
-    ignoreheadfoot,
-    top=2 cm,
-    bottom=2 cm,
-    left=2 cm,
-    right=2 cm,
-    footskip=1.0 cm,
+    top=1.2cm,
+    bottom=1.2cm,
+    left=1.5cm,
+    right=1.5cm,
+    footskip=0.5cm,
 ]{geometry}
 \usepackage{titlesec}
 \usepackage{tabularx}
 \usepackage{array}
 \usepackage[dvipsnames]{xcolor}
-\definecolor{primaryColor}{RGB}{0, 0, 0}
 \usepackage{enumitem}
-\usepackage{fontawesome5}
+\usepackage[fixed]{fontawesome5}
 \usepackage{amsmath}
-\usepackage[
-    pdftitle={\CVName's CV},
-    pdfauthor={\CVName},
-    pdfcreator={LaTeX with RenderCV},
-    colorlinks=true,
-    urlcolor=primaryColor
-]{hyperref}
-\usepackage[pscoord]{eso-pic}
-\usepackage{calc}
-\usepackage{bookmark}
-\usepackage{lastpage}
-\usepackage{changepage}
-\usepackage{paracol}
-\usepackage{ifthen}
-\usepackage{needspace}
 \usepackage{iftex}
+\usepackage[
+    colorlinks=true,
+    urlcolor=black,
+    linkcolor=black
+]{hyperref}
 
-\ifPDFTeX
-    \input{glyphtounicode}
-    \pdfgentounicode=1
+\ifXeTeX
+    \usepackage{fontspec}
+    \setmainfont{Liberation Serif}
+\else
     \usepackage[T1]{fontenc}
     \usepackage[utf8]{inputenc}
     \usepackage{lmodern}
 \fi
 
-\usepackage{charter} % font chuyên nghiệp, dễ đọc
+% --- CUSTOM COMMANDS ---
+\titleformat{\section}{\large\bfseries\uppercase}{}{0pt}{}[\titlerule]
+\titlespacing{\section}{0pt}{12pt}{6pt}
 
-% =======================
-% MACROS
-% =======================
-\newcommand{\CVName}{Tran Duc Hao}
-\newcommand{\CVLocation}{Ho Chi Minh - Vietnam}
-\newcommand{\CVEmail}{tranhaobku2017@gmail.com}
-\newcommand{\CVGitHub}{https://github.com/wikibird2024}
-\newcommand{\CVLinkedIn}{https://www.linkedin.com/in/hao-tran-91396336b/}
-
-\newcommand{\CVUniversity}{Ho Chi Minh City University of Technology}
-
-% Settings
-\raggedright
-\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
-\pagestyle{empty}
-\setcounter{secnumdepth}{0}
-\setlength{\parindent}{0pt}
-\setlength{\topskip}{0pt}
-\setlength{\columnsep}{0.15cm}
-\pagenumbering{gobble}
-
-\titleformat{\section}{\needspace{4\baselineskip}\bfseries\Large}{}{0pt}{}[\vspace{1pt}\titlerule]
-\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
-\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
-
-\newenvironment{highlights}{
-    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0 cm + 10pt]
-}{
-    \end{itemize}
+\newcommand{\entryheader}[2]{
+    \noindent\begin{tabularx}{\textwidth}{@{}X r@{}}
+        \textbf{#1} & \textit{#2} \\
+    \end{tabularx}\vspace{-2pt}
 }
 
-\newenvironment{onecolentry}{\begin{adjustwidth}{0 cm + 0.00001 cm}{0 cm + 0.00001 cm}}{\end{adjustwidth}}
+\newlist{highlights}{itemize}{1}
+\setlist[highlights]{label=$\bullet$, topsep=2pt, parsep=2pt, itemsep=0pt, leftmargin=15pt}
 
-\newenvironment{twocolentry}[2][]{
-    \onecolentry
-    \def\secondColumn{#2}
-    \setcolumnwidth{\fill, 4.5 cm}
-    \begin{paracol}{2}
-}{
-    \switchcolumn \raggedleft \secondColumn
-    \end{paracol}
-    \endonecolentry
-}
-
-\newenvironment{header}{
-    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
-}{
-    \par\kern\topsep
-}
-
-% =======================
-% DOCUMENT
-% =======================
+% --- DOCUMENT ---
 \begin{document}
 
-\newcommand{\AND}{\unskip\cleaders\copy\ANDbox\hskip\wd\ANDbox\ignorespaces}
-\newsavebox\ANDbox
-\sbox\ANDbox{$|$}
+% --- HEADER ---
+\begin{center}
+    {\Huge \textbf{TRAN DUC HAO}} \\ \vspace{6pt}
+    \small
+    \faMapMarker* Ho Chi Minh City, Vietnam \quad | \quad
+    \faPhone* (+84) 559 782 641 \quad | \quad
+    \faEnvelope \href{mailto:tranhaobku2017@gmail.com}{ tranhaobku2017@gmail.com} \\ \vspace{2pt}
+    \faGithub \href{https://github.com/wikibird2024}{ github.com/wikibird2024} \quad | \quad
+    \faLinkedin \href{https://www.linkedin.com/in/hao-tran-91396336b/}{ linkedin.com/in/hao-tran-91396336b} \\
+    \small Born: 1991
+\end{center}
 
-\begin{header}
-    \fontsize{28 pt}{28 pt}\selectfont \CVName
-
-    \vspace{5 pt}
-
-    \normalsize
-    \mbox{\CVLocation}%
-    \kern 5.0 pt%
-    \AND%
-    \kern 5.0 pt%
-    \mbox{\href{mailto:\CVEmail}{\CVEmail}}%
-    \kern 5.0 pt%
-    \AND%
-    \kern 5.0 pt%
-    \mbox{\href{\CVGitHub}{GitHub}}%
-    \kern 5.0 pt%
-    \AND%
-    \kern 5.0 pt%
-    \mbox{\href{\CVLinkedIn}{LinkedIn}}%
-\end{header}
-
-\vspace{5 pt - 0.3 cm}
-
-% =======================
-% SUMMARY
-% =======================
+% --- SUMMARY ---
 \section{Summary}
-\begin{onecolentry}
-Embedded Systems and Telecommunications enthusiast with hands-on experience in Linux, Python, C, and MCU-based embedded projects. Skilled in modular design, FreeRTOS real-time tasks, hardware interfacing, and IoT applications. Quick learner with adaptability to professional engineering environments.
-\end{onecolentry}
+\noindent Electronics and Telecommunications Engineer from HCMUT with a foundation in C/C++, Linux systems, and Embedded IoT development. I have a proven track record of self-discipline, having self-funded my engineering program through continuous professional and manual work.
 
-% =======================
-% TECHNOLOGIES / SKILLS
-% =======================
-\section{Technologies \& Skills}
-\begin{onecolentry}
+% --- TECHNOLOGIES & SKILLS ---
+\section{Technical Skills}
 \begin{highlights}
-    \item \textbf{Languages:} C, C++, Python, Bash
-    \item \textbf{Tools \& Frameworks:} ESP-IDF, FreeRTOS, MQTT, Linux, CMake, KiCad, Cadence, Asterisk
-    \item \textbf{Hardware \& Embedded Knowledge:} GPIO, UART, I2C, PWM, Sensors/Actuators, ESP32 peripherals, Network Protocols (TCP/IP, OSI, SIP)
+    \item Languages: C, C++, Bash, Python (Basic).
+    \item Embedded Systems: ESP-IDF, FreeRTOS, MQTT, UART, I2C, SPI, PWM, GSM/GPS modules.
+    \item Development Tools: CMake, Git, Docker, Neovim, Tmux, KiCad, Cadence Virtuoso.
+    \item Operating Systems: Linux (Arch, EndeavourOS, Mint), Network Protocols (TCP/IP, SIP).
+    \item English: TOEIC 740 (Proficient in reading technical documentation).
 \end{highlights}
-\end{onecolentry}
 
-% =======================
-% PROJECTS
-% =======================
-\section{Projects}
-\begin{twocolentry}{2025}
-    \textbf{ESP32 Fall Detection System}
-\end{twocolentry}
-\begin{onecolentry}
-    \begin{highlights}
-        \item Embedded firmware integrating MPU6050, EC800K 4G-GPS, buzzer, LED
-        \item Modular component design with FreeRTOS tasks and MQTT communication
-        \item Applied hardware interfacing and real-time scheduling
-        \item Source code: \href{https://github.com/wikibird2024/refactor_mainproject}{GitHub Repo}
-    \end{highlights}
-\end{onecolentry}
-
-\begin{twocolentry}{2023-2024}
-    \textbf{Embedded Linux / Networking Utilities}
-\end{twocolentry}
-\begin{onecolentry}
-    \begin{highlights}
-        \item Developed Linux-based network monitoring and diagnostic scripts/tools
-        \item Explored TCP/IP stack and OSI-layer concepts via C and Python
-        \item Source code & utilities: \href{https://github.com/wikibird2024}{GitHub}
-    \end{highlights}
-\end{onecolentry}
-
-% =======================
-% EXPERIENCE
-% =======================
-\section{Experience}
-\begin{twocolentry}{July 2023 – Present}
-    \textbf{Embedded Systems / Linux Developer}, Freelance Projects
-\end{twocolentry}
-\begin{onecolentry}
-    \begin{highlights}
-        \item Developed modular embedded systems using ESP32, FreeRTOS, and peripheral interfacing
-        \item Wrote reusable C/Python modules for hardware communication (UART, I2C, PWM, GPIO)
-        \item Utilized CMake and modular architecture for maintainable project structure
-        \item Applied Linux scripting and tools for development and testing
-    \end{highlights}
-\end{onecolentry}
-
-\begin{twocolentry}{Jan 2022 – June 2023}
-    \textbf{Telecommunications / Linux Intern}, VEEF VoIP Solutions
-\end{twocolentry}
-\begin{onecolentry}
-    \begin{highlights}
-        \item Learned and assisted in VoIP deployment (Asterisk, SIP) and Linux server management
-        \item Developed small Python scripts for automation and log processing
-        \item Monitored network performance and assisted troubleshooting
-    \end{highlights}
-\end{onecolentry}
-
-% =======================
-% EDUCATION
-% =======================
+% --- EDUCATION ---
 \section{Education}
-\begin{onecolentry}{}
-    \textbf{Bachelor of Engineering, Telecommunications}, \CVUniversity
-\end{onecolentry}
+\entryheader{Ho Chi Minh City University of Technology (HCMUT)}{2017 -- Oct 2025}
+\begin{highlights}
+    \item Engineer's Degree in Electronics and Telecommunications (4.5-year Program)
+    \item Cumulative GPA: 6.3/10 (2.5/4.0).
+    \item Coursework included: Embedded Systems, Real-time Operating Systems, Network Protocols, and Hardware Design using KiCad/Cadence.
+\end{highlights}
 
-\begin{onecolentry}
-    \begin{highlights}
-        \item Relevant coursework: Embedded Systems, Microcontroller Programming (ESP32, ARM), Real-Time Systems (FreeRTOS), Digital Electronics \& System Design, PCB Design (KiCad, Cadence), Network Protocols (TCP/IP, OSI, SIP), Linux Systems \& Shell Scripting, Computer Architecture, Electronics, IoT Applications and Communication Protocols (MQTT, Wi-Fi, Sensors/Actuators)
-    \end{highlights}
-\end{onecolentry}
+% --- KEY PROJECT ---
+\section{Projects}
+\entryheader{Real-time Fall Detection System (Thesis)}{June -- Oct 2025}
+\begin{highlights}
+    \item Built an IoT device using ESP32 and MPU6050 to detect falls and send emergency alerts via 4G-GPS (EC800K).
+    \item Wrote multitasking firmware in C using ESP-IDF and FreeRTOS for sensor processing and communication.
+    \item Integrated Asterisk VoIP for automated emergency calls and GPS tracking via MQTT/SMS.
+    \item Repository: \href{https://github.com/wikibird2024/refactor_mainproject}{github.com/wikibird2024/refactor\_mainproject}
+\end{highlights}
+
+% --- EXPERIENCE ---
+\section{Personal Background \& Experience}
+\entryheader{Self-funded Education / Parallel Work}{2018 -- 2023}
+\begin{highlights}
+    \item Maintained a full-time study schedule at HCMUT while working as a ride-hailing driver and manual laborer to cover tuition and living expenses.
+    \item This experience developed my ability to manage high-pressure situations, strict deadlines, and personal financial responsibility.
+    \item Transitioning now into a professional engineering role with the same dedication and work ethic.
+\end{highlights}
 
 \end{document}
-
