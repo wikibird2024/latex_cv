@@ -1,7 +1,8 @@
 
-1- cl clean
-2- b buil
-3- xe build in xelatex
+# STep to build and modified
+1- cl :clean
+2- b :build
+3- xe: build and review in xelatex
 
 # ============================ 🖥️ Apps & Scripts ============================
 alias ztm='zathura main.pdf'
