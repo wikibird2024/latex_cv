@@ -22,7 +22,6 @@
     linkcolor=black
 ]{hyperref}
 
-% Sử dụng font Liberation Serif để build ổn định trên Arch/Linux
 \ifXeTeX
     \usepackage{fontspec}
     \setmainfont{Liberation Serif}
@@ -50,58 +49,54 @@
 
 % --- HEADER ---
 \begin{center}
-    {\Huge \textbf{TRAN DUC HAO}} \\ \vspace{6pt}
+    {\Huge \textbf{TRẦN ĐỨC HẢO}} \\ \vspace{6pt}
     \small
     \faMapMarker* Ho Chi Minh City, Vietnam \quad | \quad
     \faPhone* (+84) 559 782 641 \quad | \quad
     \faEnvelope \href{mailto:tranhaobku2017@gmail.com}{ tranhaobku2017@gmail.com} \\ \vspace{2pt}
     \faGithub \href{https://github.com/wikibird2024}{ github.com/wikibird2024} \quad | \quad
     \faLinkedin \href{https://www.linkedin.com/in/hao-tran-91396336b/}{ linkedin.com/in/hao-tran-91396336b} \\
-    \small Born: 1991
+    \small Năm sinh: 1991
 \end{center}
 
 % --- SUMMARY ---
-\section{Summary}
-\noindent Electronics and Telecommunications Engineer from HCMUT with a strong foundation in C/C++, Linux systems, and Embedded IoT. I possess a proven track record of self-discipline, having fully self-funded my 4.5-year engineering program through parallel professional and manual work. Currently focused on mastering system-level optimization, memory management, and RTOS.
-
-% --- TECHNOLOGIES & SKILLS ---
-\section{Technical Skills}
+\section{tóm tắt \& kỹ năng}
+\noindent Tốt nghiệp HCMUT ngành Điện tử - Viễn thông, có nền tảng về lập trình hệ thống và firmware. Khả năng làm việc linh hoạt từ thiết kế phần cứng đến phát triển phần mềm nhúng.
 \begin{highlights}
-    \item Languages: C, C++, Bash, Python (Basic).
-    \item Embedded Systems: ESP-IDF, FreeRTOS, MQTT, UART, I2C, SPI, PWM.
-    \item Telecommunications: Digital Signal Processing (DSP), Communication Networks, RF \& Microwave Circuit.
-    \item IC Design \& EDA Tools: CMOS Digital/Analog IC Design, Cadence Virtuoso, KiCad, Verilog (Basic).
-    \item Operating Systems: Linux (Arch,debian... ), enbedded linux, TCP/IP, OSI Model, SIP/VoIP.
-    \item English: TOEIC 740 (Proficient in reading technical documentation and research).
+    \item Ngôn ngữ lập trình: C/C++, Bash shell, Python, Verilog (cơ bản).
+    \item Hệ thống nhúng: ESP-IDF, FreeRTOS, kiến trúc MCU, MQTT, UART, I2C, SPI, PWM.
+    \item Viễn thông: Xử lý tín hiệu số (DSP), Mạng truyền thông, Mạch RF \& vi sóng.
+    \item Thiết kế IC \& công cụ EDA: Thiết kế IC số/tương tự CMOS, Cadence Virtuoso, KiCad.
+    \item Linux System: Shell scripting (Bash), Systemd, SSH, quản trị hệ thống qua CLI (Neovim/Tmux).
+    \item Networking: TCP/IP stack, Socket programming, OSI model, SIP/VoIP, MQTT.
+    \item Tiếng Anh: TOEIC 740 (nghe và đọc hiểu tốt tài liệu kỹ thuật).
 \end{highlights}
 
 % --- EDUCATION ---
-\section{Education}
-\entryheader{Ho Chi Minh City University of Technology (HCMUT)}{2017 -- Oct 2025}
+\section{Học vấn}
+\entryheader{Đại học Bách Khoa TP.HCM (HCMUT)}{2017 -- 10/2025}
 \begin{highlights}
-    \item Engineer's Degree in Electronics and Telecommunications (4.5-year Program).
-    \item Cumulative GPA: 6.3/10 (2.5/4.0).
-    \item Core Coursework: VLSI Design, DSP, Communication Theory, RF Circuitry, and Embedded Systems.
-    \item Practical Experience: Designed IC layouts using Cadence Virtuoso ,PCB layouts in KiCad.
+    \item Bằng Kỹ sư Điện tử - Viễn thông (chương trình chính quy 4.5 năm), GPA: 6.3/10 (2.5/4.0); hoàn thành theo hình thức vừa học vừa làm.
+    \item Kiến thức chuyên ngành: Thiết kế VLSI, DSP, Lý thuyết truyền thông, Mạch RF, Hệ thống nhúng.
+    \item Kinh nghiệm thực hành: Thiết kế layout IC bằng Cadence Virtuoso, thiết kế PCB với KiCad.
 \end{highlights}
 
 % --- KEY PROJECT ---
-\section{Projects}
-\entryheader{Real-time Fall Detection System (Thesis)}{June -- Oct 2025}
+\section{Dự án}
+\entryheader{Hệ thống phát hiện té ngã thời gian thực}{06 -- 10/2025}
 \begin{highlights}
-    \item Built an IoT device using ESP32 and MPU6050 to detect falls and send emergency alerts via 4G-GPS (EC800K).
-    \item Developed multitasking firmware in C using ESP-IDF and FreeRTOS for sensor data processing.
-    \item Integrated Asterisk VoIP for automated emergency calls and GPS tracking via MQTT/SMS.
-    \item Source Code: \href{https://github.com/wikibird2024/refactor_mainproject}{github.com/wikibird2024/refactor\_mainproject}
+    \item Xây dựng thiết bị IoT sử dụng ESP32/MPU6050 kết hợp xử lý ảnh qua OpenCV và MediaPipe (Python) để nhận diện khung xương người.
+    \item Phát triển firmware đa nhiệm bằng C với ESP-IDF và FreeRTOS để xử lý dữ liệu cảm biến và truyền tin thời gian thực.
+    \item Sử dụng Python trên Linux điều phối kết nối Asterisk VoIP, MQTT và SMS để thực hiện cảnh báo khẩn cấp tự động.
+    \item Mã nguồn: \href{https://github.com/wikibird2024/refactor_mainproject}{github.com/wikibird2024/refactor\_mainproject}
 \end{highlights}
-
 % --- EXPERIENCE ---
-\section{Personal Background \& Experience}
-\entryheader{Self-funded Education / Parallel Work}{2018 -- 2023}
+\section{Kinh nghiệm \& Quá trình cá nhân}
+\entryheader{Tự trang trải học tập / Làm việc song song}{2018 -- 2023}
 \begin{highlights}
-    \item Maintained a full-time study schedule at HCMUT while working as a ride-hailing driver and laborer to cover tuition and living expenses.
-    \item This experience sharpened my ability to manage high-pressure situations, strict deadlines, and personal financial responsibility.
-    \item Transitioning now into a professional engineering role with strong dedication and a technical-first mindset.
+    \item Duy trì việc học tại HCMUT đồng thời làm các công việc bên ngoài để tự chủ tài chính.
+    \item Rèn luyện khả năng chịu áp lực, quản lý thời gian và tư duy giải quyết vấn đề độc lập.
+    \item Hiện đang tập trung hoàn toàn vào lĩnh vực kỹ thuật embedded, viễn thông với định hướng chuyên sâu và dài hạn.
 \end{highlights}
 
 \end{document}
